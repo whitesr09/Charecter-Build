@@ -37,14 +37,14 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: Character-Build-v1.2.0-ci
+          name: Character-Build-v1.3.0-ci
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
 
       - name: Upload unsigned release APK
         uses: actions/upload-artifact@v4
         with:
-          name: Character-Build-v1.2.0-unsigned-release
+          name: Character-Build-v1.3.0-unsigned-release
           path: app/build/outputs/apk/release/app-release-unsigned.apk
           if-no-files-found: error
 
