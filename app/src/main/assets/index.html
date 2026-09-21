@@ -733,6 +733,31 @@ body.theme-minimal.light .topbar-inner{
 /* Theme changes should be immediate and stable; don't blur the whole document. */
 body.theme-transitioning .shell,body.theme-transitioning .settings-screen{filter:none!important;opacity:1!important}
 
+
+/* small-device finishing pass */
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overscroll-behavior-y:none}
+button{font-weight:inherit}
+.top-actions{gap:7px;flex:0 0 auto}
+.brand{flex:1 1 auto}
+.brand>div:last-child{min-width:0}
+.brand-title,.brand-sub{overflow:hidden;text-overflow:ellipsis}
+.custom-row{align-items:stretch}
+.custom-row .addbtn{height:auto;min-height:50px}
+@media(max-width:390px){
+  .topbar-inner{padding:6px}
+  .brand-sub{display:none}
+  .logo{width:36px;height:36px;border-radius:12px}
+  .brand-title{font-size:14px}
+  .top-actions{gap:5px}
+  .iconbtn{width:40px;height:40px;flex-basis:40px;border-radius:13px}
+  .ui-icon{width:19px;height:19px}
+  .bottom-inner{gap:7px;padding:8px}
+  .countbox{min-width:72px;padding:0 5px}
+  .actions{gap:6px}
+  .reset{padding:0 10px}
+  .generate{padding:0 11px;font-size:12px}
+}
+
 </style>
 </head>
 <body>
