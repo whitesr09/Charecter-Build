@@ -9,8 +9,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Build;
-import android.provider.Settings;
 import android.view.Window;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
@@ -150,7 +150,18 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public String appVersion() {
-            return "1.4.0";
+            return "1.5.0";
+        }
+
+        @JavascriptInterface
+        public void haptic(int kind) {
+            runOnUiThread(() -> {
+                if (webView == null) return;
+                int feedback = HapticFeedbackConstants.KEYBOARD_TAP;
+                if (kind == 1) feedback = HapticFeedbackConstants.VIRTUAL_KEY;
+                if (kind >= 2) feedback = HapticFeedbackConstants.LONG_PRESS;
+                webView.performHapticFeedback(feedback);
+            });
         }
 
         @JavascriptInterface
