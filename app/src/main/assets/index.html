@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#05060a">
+<title>Character Build</title>
+<style>
+:root{
+  --bg:#05060a;
+  --surface:#0b0d13;
+  --surface2:#11141d;
+  --surface3:#171b26;
+  --border:rgba(255,255,255,.09);
+  --border2:rgba(255,255,255,.14);
+  --text:#f6f7fb;
+  --muted:#9095a4;
+  --muted2:#666b79;
+  --purple:#785cff;
+  --blue:#39a8ff;
+  --cyan:#00d7c6;
+  --green:#00d99b;
+  --danger:#ff5d78;
+  --shadow:0 18px 48px rgba(0,0,0,.42);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}
+body{
+  margin:0;
+  background:
+    radial-gradient(900px 380px at 12% -5%,rgba(120,92,255,.18),transparent 58%),
+    radial-gradient(700px 380px at 92% 3%,rgba(0,215,198,.11),transparent 58%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  min-height:100vh;
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.shell{max-width:860px;margin:0 auto;padding:0 14px 132px}
+.topbar{
+  position:sticky;top:0;z-index:40;
+  margin:0 -14px;
+  padding:10px 14px 10px;
+  background:linear-gradient(180deg,rgba(5,6,10,.98),rgba(5,6,10,.86),rgba(5,6,10,.55),transparent);
+  backdrop-filter:blur(18px);
+}
+.topbar-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding-top:max(0px,env(safe-area-inset-top));
+}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.logo{
+  width:38px;height:38px;border-radius:13px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--purple),var(--blue) 52%,var(--cyan));
+  box-shadow:0 8px 26px rgba(85,103,255,.28);
+  font-size:19px;font-weight:900
+}
+.brand-title{font-weight:800;font-size:15px;letter-spacing:-.02em}
+.brand-sub{font-size:11px;color:var(--muted);margin-top:1px;white-space:nowrap}
+.top-actions{display:flex;gap:8px}
+.iconbtn{
+  width:38px;height:38px;border-radius:13px;border:1px solid var(--border);
+  color:var(--text);background:rgba(16,18,27,.8);display:grid;place-items:center;font-size:17px
+}
+.hero{padding:22px 2px 10px}
+.kicker{font-size:11px;color:#89dbff;letter-spacing:.18em;font-weight:800;text-transform:uppercase}
+h1{font-size:34px;line-height:1.05;margin:8px 0 10px;letter-spacing:-.045em}
+.grad{
+  background:linear-gradient(90deg,#fff 0%,#b5b0ff 48%,#7cf2e8 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.hero p{margin:0;color:var(--muted);font-size:14px;line-height:1.6;max-width:620px}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px
+}
+.metric{
+  padding:13px 14px;border:1px solid var(--border);border-radius:17px;
+  background:linear-gradient(180deg,rgba(18,20,30,.88),rgba(10,12,18,.88))
+}
+.metric strong{font-size:20px;display:block}
+.metric span{font-size:11px;color:var(--muted)}
+.progress{height:4px;border-radius:9px;background:#171a22;overflow:hidden;margin-top:8px}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--cyan));transition:.3s}
+.section-label{
+  display:flex;align-items:center;justify-content:space-between;margin:20px 2px 9px
+}
+.section-label h2{font-size:13px;margin:0;color:#bfc2ce;letter-spacing:.08em;text-transform:uppercase}
+.section-label button{
+  border:0;background:none;color:#8da6ff;font-size:12px;padding:5px
+}
+.model-row,.preset-row{display:flex;gap:8px;overflow:auto;padding:2px 0 4px;scrollbar-width:none}
+.model-row::-webkit-scrollbar,.preset-row::-webkit-scrollbar{display:none}
+.model-chip,.preset{
+  white-space:nowrap;border:1px solid var(--border);background:#0e1118;color:#cfd2dc;
+  border-radius:999px;padding:10px 13px;font-size:12px
+}
+.model-chip.active{
+  border-color:rgba(121,93,255,.65);color:white;
+  background:linear-gradient(180deg,rgba(121,93,255,.28),rgba(121,93,255,.10));
+  box-shadow:inset 0 0 0 1px rgba(121,93,255,.10)
+}
+.preset{border-radius:15px;padding:12px 14px;min-width:138px}
+.preset b{display:block;font-size:12px;color:#f4f4f8}
+.preset small{display:block;color:var(--muted);margin-top:3px;font-size:10px}
+.smart-card{
+  margin-top:14px;border-radius:20px;border:1px solid var(--border);
+  background:linear-gradient(135deg,rgba(121,93,255,.09),rgba(0,215,198,.04) 65%,rgba(255,255,255,.02));
+  padding:15px
+}
+.smart-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.smart-title{font-size:14px;font-weight:750}
+.smart-sub{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.45}
+.toggle{position:relative;width:46px;height:27px;flex:0 0 auto}
+.toggle input{opacity:0;width:0;height:0}
+.slider{
+  position:absolute;inset:0;border-radius:99px;background:#20242f;border:1px solid var(--border);
+  transition:.2s
+}
+.slider:before{
+  content:"";position:absolute;width:21px;height:21px;left:2px;top:2px;border-radius:50%;
+  background:#a7abba;transition:.2s
+}
+.toggle input:checked+.slider{background:linear-gradient(90deg,var(--purple),#5868ff)}
+.toggle input:checked+.slider:before{transform:translateX(19px);background:white}
+.range-wrap{display:flex;align-items:center;gap:12px;margin-top:13px}
+.range-wrap span{font-size:11px;color:var(--muted);min-width:82px}
+input[type=range]{width:100%;accent-color:#765cff}
+.card{
+  margin:13px 0;border:1px solid var(--border);border-radius:24px;padding:17px 15px 16px;
+  background:linear-gradient(180deg,rgba(16,18,25,.96),rgba(11,13,19,.96));
+  box-shadow:0 7px 18px rgba(0,0,0,.12);
+  overflow:hidden
+}
+.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.card-title-wrap{display:flex;gap:10px;align-items:flex-start}
+.num{font-size:11px;color:#6c7180;padding-top:4px;min-width:20px}
+.card h3{font-size:18px;letter-spacing:-.02em;margin:0;font-weight:720}
+.desc{font-size:11px;color:var(--muted);margin:5px 0 0;line-height:1.45}
+.mode{
+  white-space:nowrap;font-size:10px;letter-spacing:.05em;padding:7px 10px;border-radius:999px;
+  border:1px solid rgba(121,93,255,.45);color:#a9a4ff;background:rgba(121,93,255,.08)
+}
+.mode.any{border-color:rgba(0,215,155,.38);color:#55e7ba;background:rgba(0,215,155,.07)}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.options.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.opt{
+  min-height:57px;padding:11px 9px;border-radius:16px;border:1px solid var(--border);
+  color:#dfe1e8;background:#090b10;text-align:center;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:6px;line-height:1.24;font-size:13px;transition:.15s;position:relative;overflow:hidden
+}
+.opt:active{transform:scale(.98)}
+.opt.selected{
+  color:white;border-color:rgba(121,93,255,.72);
+  background:linear-gradient(145deg,rgba(121,93,255,.22),rgba(43,83,255,.10));
+  box-shadow:inset 0 0 0 1px rgba(132,112,255,.16),0 5px 18px rgba(70,70,255,.08)
+}
+.opt.selected:after{
+  content:"✓";position:absolute;right:7px;top:6px;width:17px;height:17px;border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--cyan));display:grid;place-items:center;
+  color:#fff;font-size:10px;font-weight:900
+}
+.swatch{
+  width:30px;height:30px;border-radius:50%;border:2px solid #363946;
+  box-shadow:inset 0 0 12px rgba(255,255,255,.12)
+}
+.eye{font-size:22px;line-height:1}
+.icon{font-size:22px;color:#a9a9b5}
+.custom-row{display:flex;gap:8px;margin-top:10px}
+.custom-input,.textarea,.text-input{
+  width:100%;border:1px solid var(--border);background:#090b10;color:var(--text);
+  border-radius:15px;outline:none;padding:13px 13px;font-size:13px
+}
+.custom-input:focus,.textarea:focus,.text-input:focus{border-color:rgba(121,93,255,.72)}
+.addbtn{
+  flex:0 0 auto;border:1px solid var(--border2);background:#141722;color:#ddd;border-radius:14px;padding:0 14px
+}
+.textarea{resize:none;min-height:95px;line-height:1.5}
+.inline-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+.mini-select{position:relative}
+.mini-select label{display:block;color:var(--muted);font-size:10px;margin:0 0 5px 2px}
+select{
+  width:100%;appearance:none;border:1px solid var(--border);background:#090b10;color:#e8e9ed;
+  border-radius:14px;padding:12px 30px 12px 12px;font-size:12px;outline:none
+}
+.upload{
+  border:1px dashed rgba(255,255,255,.2);border-radius:17px;padding:16px;margin-top:12px;
+  display:flex;align-items:center;gap:12px;background:#090b10;position:relative
+}
+.upload input{position:absolute;inset:0;opacity:0}
+.upload-icon{font-size:25px;color:#aaa6bc}
+.upload b{font-size:12px;display:block}
+.upload small{font-size:10px;color:var(--muted)}
+.preview{display:none;margin-top:10px;border-radius:16px;overflow:hidden;border:1px solid var(--border);position:relative}
+.preview img{display:block;width:100%;height:150px;object-fit:cover}
+.preview span{position:absolute;left:9px;bottom:9px;background:rgba(0,0,0,.72);padding:6px 8px;border-radius:9px;font-size:10px}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.feature{
+  border:1px solid var(--border);background:#090b10;border-radius:16px;padding:12px;display:flex;gap:9px;align-items:center
+}
+.feature label{font-size:11px;color:#d9dbe3;line-height:1.3;flex:1}
+.feature input{accent-color:#735cff}
+.bottom{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  background:linear-gradient(180deg,rgba(5,6,10,0),rgba(5,6,10,.88) 18%,rgba(5,6,10,.98) 38%);
+  padding:25px 14px calc(12px + env(safe-area-inset-bottom))
+}
+.bottom-inner{
+  max-width:860px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;
+  padding:9px;border:1px solid var(--border);border-radius:21px;
+  background:rgba(11,13,19,.94);backdrop-filter:blur(24px);box-shadow:0 -10px 35px rgba(0,0,0,.25)
+}
+.countbox{min-width:82px;padding:0 7px}
+.countbox b{font-size:15px}
+.countbox small{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+.actions{display:grid;grid-template-columns:auto 1fr;gap:8px}
+.reset{
+  border:1px solid var(--border2);background:#0d1017;color:#d8dae2;border-radius:15px;padding:0 14px;font-size:12px
+}
+.generate{
+  min-height:54px;border:0;color:white;font-weight:800;font-size:13px;border-radius:16px;padding:0 14px;
+  background:linear-gradient(100deg,#6658ff,#3498ff 48%,#00d0aa);
+  box-shadow:0 10px 28px rgba(53,105,255,.24)
+}
+.modal{
+  display:none;position:fixed;z-index:80;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(9px);
+  align-items:flex-end;justify-content:center
+}
+.modal.show{display:flex}
+.sheet{
+  width:min(860px,100%);max-height:92vh;overflow:auto;
+  border-radius:27px 27px 0 0;border:1px solid var(--border2);border-bottom:0;
+  background:linear-gradient(180deg,#131620,#090b10);padding:9px 16px calc(18px + env(safe-area-inset-bottom));
+  animation:up .2s ease-out
+}
+@keyframes up{from{transform:translateY(35px);opacity:.7}to{transform:none;opacity:1}}
+.handle{width:42px;height:4px;border-radius:10px;background:#343844;margin:2px auto 14px}
+.sheet-head{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.sheet h2{margin:0;font-size:21px}
+.close{width:35px;height:35px;border-radius:12px;border:1px solid var(--border);background:#11141c;color:#ddd}
+.score-row{display:flex;gap:8px;overflow:auto;margin:13px 0}
+.score{padding:8px 10px;border:1px solid var(--border);border-radius:12px;background:#0b0d13;white-space:nowrap}
+.score b{font-size:12px}.score small{display:block;font-size:9px;color:var(--muted);margin-top:2px}
+.output{
+  border:1px solid var(--border);background:#07090d;border-radius:18px;padding:14px;
+  color:#eaebf0;font-size:13px;line-height:1.65;white-space:pre-wrap;min-height:160px
+}
+.output-tabs{display:flex;gap:7px;margin:13px 0 9px}
+.tab{
+  border:1px solid var(--border);background:#0c0f16;color:#999eab;border-radius:11px;padding:8px 11px;font-size:11px
+}
+.tab.active{color:white;border-color:rgba(121,93,255,.55);background:rgba(121,93,255,.12)}
+.sheet-actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}
+.sheet-actions button{
+  border:1px solid var(--border);background:#11141c;color:#e7e8ed;border-radius:14px;min-height:46px;font-size:11px
+}
+.sheet-actions button.primary{border:0;background:linear-gradient(100deg,#6b5cff,#00cbae);font-weight:800}
+.history-item{
+  border:1px solid var(--border);border-radius:16px;padding:12px;background:#0a0c12;margin:9px 0
+}
+.history-item .hmeta{display:flex;justify-content:space-between;color:var(--muted);font-size:9px;margin-bottom:7px}
+.history-item p{font-size:11px;line-height:1.45;color:#d2d4dc;margin:0;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.history-item button{margin-top:8px;border:1px solid var(--border);background:#12151d;color:#ddd;border-radius:10px;padding:7px 9px;font-size:10px}
+.empty{text-align:center;color:var(--muted);padding:28px 8px;font-size:12px}
+.toast{
+  position:fixed;z-index:100;left:50%;bottom:110px;transform:translate(-50%,20px);
+  background:#f3f4f8;color:#08090c;border-radius:999px;padding:10px 14px;font-size:11px;font-weight:750;
+  opacity:0;pointer-events:none;transition:.2s;box-shadow:var(--shadow)
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(min-width:650px){
+  .shell{padding-left:22px;padding-right:22px}.topbar{margin:0 -22px;padding-left:22px;padding-right:22px}
+  .options{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hero-grid{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo">✦</div>
+        <div>
+          <div class="brand-title">Character Build</div>
+          <div class="brand-sub">AI Character Prompt Studio</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="iconbtn" onclick="surpriseMe()" aria-label="Surprise me">⚄</button>
+        <button class="iconbtn" onclick="openHistory()" aria-label="History">◷</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="kicker">Creator Studio 1.1</div>
+    <h1><span class="grad">Build the character.</span><br>Control every detail.</h1>
+    <p>Design reusable AI characters with visual traits, styling, scene direction, camera language and model-aware prompt formatting.</p>
+    <div class="hero-grid">
+      <div class="metric"><strong id="metricSelected">0</strong><span>traits selected</span><div class="progress"><i id="readyBar"></i></div></div>
+      <div class="metric"><strong id="metricReady">0%</strong><span>prompt readiness</span><div class="progress"><i id="qualityBar"></i></div></div>
+    </div>
+  </section>
+
+  <div class="section-label"><h2>Target model</h2><button onclick="setModel('Universal')">Reset</button></div>
+  <div class="model-row" id="modelRow"></div>
+
+  <div class="section-label"><h2>Quick presets</h2><button onclick="surpriseMe()">Surprise me ✦</button></div>
+  <div class="preset-row">
+    <button class="preset" onclick="applyPreset('influencer')"><b>Creator Pro</b><small>Social / influencer</small></button>
+    <button class="preset" onclick="applyPreset('editorial')"><b>Editorial</b><small>Luxury fashion</small></button>
+    <button class="preset" onclick="applyPreset('cinematic')"><b>Cinematic</b><small>Film portrait</small></button>
+    <button class="preset" onclick="applyPreset('anime')"><b>Anime Hero</b><small>Stylized character</small></button>
+    <button class="preset" onclick="applyPreset('product')"><b>Brand Talent</b><small>Commercial campaign</small></button>
+  </div>
+
+  <div class="smart-card">
+    <div class="smart-head">
+      <div><div class="smart-title">Smart prompt engine</div><div class="smart-sub">Fill blank sections cohesively and add professional image-generation language.</div></div>
+      <label class="toggle"><input id="smartFill" type="checkbox" checked><span class="slider"></span></label>
+    </div>
+    <div class="range-wrap"><span>Detail density</span><input id="detailRange" type="range" min="1" max="3" value="3"><b id="detailLabel" style="font-size:11px">Max</b></div>
+  </div>
+
+  <main id="sections"></main>
+
+  <section class="card">
+    <div class="card-head">
+      <div class="card-title-wrap"><span class="num">20</span><div><h3>Advanced Controls</h3><p class="desc">Fine tune consistency, quality safeguards and output behavior.</p></div></div>
+      <span class="mode any">PRO</span>
+    </div>
+    <div class="feature-grid">
+      <div class="feature"><label>Identity-lock language</label><input id="identityLock" type="checkbox" checked></div>
+      <div class="feature"><label>Anatomy safeguards</label><input id="anatomySafe" type="checkbox" checked></div>
+      <div class="feature"><label>Natural skin texture</label><input id="skinSafe" type="checkbox" checked></div>
+      <div class="feature"><label>Negative prompt</label><input id="negativeEnabled" type="checkbox" checked></div>
+    </div>
+    <div class="inline-grid">
+      <div class="mini-select"><label>Stylization</label><select id="stylize"><option value="natural">Natural</option><option value="balanced" selected>Balanced</option><option value="creative">Creative</option><option value="extreme">Extreme</option></select></div>
+      <div class="mini-select"><label>Prompt language</label><select id="promptLanguage"><option>Professional</option><option>Concise</option><option>Cinematic</option><option>Technical</option></select></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <div class="card-title-wrap"><span class="num">21</span><div><h3>Other Features</h3><p class="desc">Scars, freckles, makeup, jewelry, props, tattoos, clothing details or anything unique.</p></div></div>
+      <span class="mode any">YOUR TEXT</span>
+    </div>
+    <textarea class="textarea" id="otherFeatures" placeholder="e.g. faint freckles across the nose, silver ear cuff, subtle visible veins, vintage watch, layered fabric textures..."></textarea>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <div class="card-title-wrap"><span class="num">22</span><div><h3>Negative / Avoid</h3><p class="desc">Optional things the generator should avoid.</p></div></div>
+      <span class="mode any">OPTIONAL</span>
+    </div>
+    <textarea class="textarea" id="negativeCustom" placeholder="e.g. waxy skin, malformed hands, duplicate fingers, text, watermark..."></textarea>
+  </section>
+</div>
+
+<div class="bottom">
+  <div class="bottom-inner">
+    <div class="countbox"><b><span id="bottomCount">0</span> traits</b><small><span id="sectionCount">0</span>/19 sections</small></div>
+    <div class="actions"><button class="reset" onclick="resetAll()">↻ Reset</button><button class="generate" onclick="generatePrompt()">✦ Generate Character Prompt</button></div>
+  </div>
+</div>
+
+<div class="modal" id="resultModal" onclick="modalBackdrop(event,'resultModal')">
+  <div class="sheet">
+    <div class="handle"></div>
+    <div class="sheet-head"><div><div class="kicker">PROMPT READY</div><h2>Your character blueprint</h2></div><button class="close" onclick="closeModal('resultModal')">✕</button></div>
+    <div class="score-row"><div class="score"><b id="outModel">Universal</b><small>target model</small></div><div class="score"><b id="outTraits">0 traits</b><small>detail coverage</small></div><div class="score"><b id="outRatio">9:16</b><small>aspect ratio</small></div></div>
+    <div class="output-tabs"><button class="tab active" id="tabMain" onclick="showOutput('main')">Main prompt</button><button class="tab" id="tabNegative" onclick="showOutput('negative')">Negative</button></div>
+    <div class="output" id="promptOutput"></div>
+    <div class="sheet-actions"><button onclick="copyOutput()">Copy</button><button onclick="shareOutput()">Share</button><button class="primary" onclick="saveHistory()">Save</button></div>
+  </div>
+</div>
+
+<div class="modal" id="historyModal" onclick="modalBackdrop(event,'historyModal')">
+  <div class="sheet">
+    <div class="handle"></div>
+    <div class="sheet-head"><div><div class="kicker">LOCAL LIBRARY</div><h2>Prompt history</h2></div><button class="close" onclick="closeModal('historyModal')">✕</button></div>
+    <div id="historyList"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const MODELS=["Universal","Midjourney","ChatGPT Images","FLUX","Kling","Higgsfield"];
+let currentModel="Universal";
+let lastPrompt="";
+let lastNegative="";
+let activeOutput="main";
+
+const sections=[
+{key:"gender",title:"Gender",mode:"single",desc:"Choose the character's gender presentation.",options:["Female","Male","Non-binary","Androgynous"]},
+{key:"age",title:"Age Range",mode:"single",options:["Young (18–24)","Young Adult (25–34)","Mature (35–50)","Senior (51+)"]},
+{key:"ethnicity",title:"Ethnicity / Origin",mode:"multi",desc:"Mixed heritage combinations are welcome.",options:["African","Asian","European","Indian","Middle Eastern","Indigenous","Latino / Hispanic","American","South Asian","East Asian","Mixed Heritage"]},
+{key:"body",title:"Body Type",mode:"single",options:["Athletic / Fit","Lean","Curvy","Petite","Tall / Statuesque","Muscular","Average","Broad-Shouldered","Plus Size"]},
+{key:"hair",title:"Hair Style",mode:"single",visual:true,options:[
+  {t:"Long Waves",i:"〰"},{t:"Short Pixie",i:"✦"},{t:"Afro",i:"●"},{t:"Bob Cut",i:"◒"},{t:"Braids",i:"≋"},{t:"Sleek Ponytail",i:"◜"},
+  {t:"Buzzcut",i:"◡"},{t:"Wolfcut",i:"⌁"},{t:"Crew Cut",i:"◠"},{t:"Fade",i:"⌒"},{t:"Pompadour",i:"◕"},{t:"Man Bun",i:"◉"},{t:"Slicked Back",i:"⌁"},{t:"Curly Top",i:"❦"}
+]},
+{key:"hairColor",title:"Hair Color",mode:"single",visual:true,options:[
+  {t:"Obsidian Black",c:"#17181d"},{t:"Platinum Blonde",c:"#f4e9c8"},{t:"Chestnut Brown",c:"#7d4229"},{t:"Copper Red",c:"#d95f2f"},
+  {t:"Ash Grey",c:"#b7bac3"},{t:"Pastel Pink",c:"#e9a5c7"},{t:"Emerald Green",c:"#097c60"},{t:"Honey Blonde",c:"#e9aa31"},{t:"Midnight Blue",c:"#173f75"}
+]},
+{key:"eyes",title:"Eye Color",mode:"single",visual:true,options:[
+  {t:"Deep Brown",eye:"#5a3018"},{t:"Ocean Blue",eye:"#168cdb"},{t:"Emerald Green",eye:"#00a878"},{t:"Amber",eye:"#e39a16"},{t:"Hazel",eye:"#829351"},{t:"Grey",eye:"#9aa7b4"},{t:"Heterochromia",eye:"linear-gradient(90deg,#168cdb 50%,#9b551e 50%)"}
+]},
+{key:"skin",title:"Skin & Complexion",mode:"single",options:["Porcelain / Very Fair","Fair","Light","Medium","Olive","Tan","Brown","Deep Brown","Ebony"]},
+{key:"render",title:"Base Rendering Style",mode:"single",options:["Hyper-Realistic Photography","Cinematic Film","Editorial Fashion","Luxury Commercial","Natural Smartphone Photo","3D Animation","2D Animation","Anime / Manga","Graphic Novel","Painterly Realism"]},
+{key:"personality",title:"Personality",mode:"multi",options:["Confident","Playful","Mysterious","Elegant","Bold","Serene","Rebellious","Sophisticated","Charismatic","Introspective","Friendly","Reserved","Energetic"]},
+{key:"role",title:"Role",mode:"multi",options:["Fashion Model","Influencer","Streetwear Influencer","Fitness Coach","Travel Vlogger","Gamer / Streamer","Musician / Artist","Beauty Creator","Tech Reviewer","Student","Entrepreneur","Actor","Athlete"]},
+{key:"expression",title:"Expression",mode:"multi",options:["Confident Smile","Soft Smile","Smirk","Serious / Stoic","Playful Wink","Warm Laugh","Neutral Calm","Intense Stare","Thoughtful Gaze","Looking Away"]},
+{key:"pose",title:"Pose & Body Language",mode:"multi",options:["Relaxed Standing","Walking Candidly","Seated Casual","Leaning Against Wall","Arms Crossed","Hands in Pockets","Dynamic Fashion Pose","Looking Over Shoulder","Natural Mid-Motion","Low-Angle Power Pose"]},
+{key:"dressing",title:"Dressing",mode:"single",desc:"Pick a preset or add your own.",options:["Streetwear (Hoodie & Cargo Pants)","Business Casual (Blazer & Chinos)","Athletic Wear (Tracksuit)","Smart Casual (Shirt & Jeans)","Plain T-Shirt & Jeans","Kerala Traditional Saree","Kerala Mundu & Shirt","Chic Streetwear","Elegant Evening Dress","Minimal Monochrome","Luxury Designer Outfit","Futuristic Fashion"]},
+{key:"scene",title:"Background / Scene",mode:"single",desc:"Choose a setting, describe your own, or attach a visual reference.",upload:true,options:["Seamless Studio Backdrop (White)","Seamless Studio Backdrop (Black)","Urban Street","Indoor Loft","Beach / Coastal","Neon Cityscape","Minimalist Interior","Nature / Forest","Luxury Interior","Rooftop at Golden Hour","Kerala Heritage Interior","Café / Lifestyle"]},
+{key:"lighting",title:"Lighting Design",mode:"multi",options:["Soft Window Light","Golden Hour","Cinematic Key Light","Dramatic Chiaroscuro","Studio Softbox","Beauty Dish","Neon Rim Light","Volumetric Light","Overcast Daylight","Hard Direct Flash","Sunset Backlight"]},
+{key:"camera",title:"Camera & Lens",mode:"multi",options:["24mm Wide Angle","35mm Environmental","50mm Natural Perspective","85mm Portrait Lens","105mm Telephoto Portrait","Smartphone Main Camera","Smartphone Portrait Mode","Shallow Depth of Field","Deep Focus","f/1.4 Look","f/2.8 Look"]},
+{key:"framing",title:"Framing & Composition",mode:"single",options:["Extreme Close-Up","Close-Up Portrait","Head & Shoulders","Medium Portrait","Three-Quarter Body","Full Body","Wide Environmental Portrait","Eye-Level","Slight Low Angle","Slight High Angle"]},
+{key:"ratio",title:"Image Dimensions",mode:"single",visual:true,options:[
+  {t:"1:1 Square",i:"□"},{t:"4:5 Portrait",i:"▯"},{t:"9:16 Vertical / Reels",i:"▯"},{t:"16:9 Widescreen",i:"▭"},{t:"3:4 Portrait Tall",i:"▯"},{t:"4:3 Landscape",i:"▭"}
+]}
+];
+
+const state={};
+sections.forEach(s=>state[s.key]=[]);
+const custom={};
+
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
+function optionText(o){return typeof o==="string"?o:o.t}
+function sectionIndex(s){return String(sections.indexOf(s)+1).padStart(2,"0")}
+
+function renderModels(){
+ const row=document.getElementById("modelRow");
+ row.innerHTML=MODELS.map(m=>'<button class="model-chip '+(m===currentModel?'active':'')+'" onclick="setModel(\''+m.replace(/'/g,"\\'")+'\')">'+esc(m)+'</button>').join("");
+}
+function setModel(m){currentModel=m;renderModels();toast("Target: "+m)}
+
+function renderSections(){
+ const root=document.getElementById("sections");
+ root.innerHTML=sections.map(s=>{
+   const mode=s.mode==="multi"?"PICK ANY":"PICK ONE";
+   const any=s.mode==="multi"?" any":"";
+   const cls=(s.visual?"options three":"options");
+   const opts=s.options.map((o,i)=>{
+      const t=optionText(o);
+      let deco="";
+      if(typeof o==="object"&&o.c)deco='<span class="swatch" style="background:'+o.c+'"></span>';
+      else if(typeof o==="object"&&o.eye)deco='<span class="eye">◉</span><span style="width:18px;height:5px;border-radius:50%;background:'+o.eye+';display:block;margin-top:-9px"></span>';
+      else if(typeof o==="object"&&o.i)deco='<span class="icon">'+o.i+'</span>';
+      return '<button class="opt" data-key="'+s.key+'" data-value="'+esc(t)+'" onclick="selectOption(\''+s.key+'\','+i+',this)">'+deco+'<span>'+esc(t)+'</span></button>';
+   }).join("");
+   const customInput='<div class="custom-row"><input class="custom-input" id="custom_'+s.key+'" placeholder="Add custom '+esc(s.title.toLowerCase())+'..."><button class="addbtn" onclick="addCustom(\''+s.key+'\')">＋</button></div>';
+   const upload=s.upload?'<label class="upload"><input id="sceneFile" type="file" accept="image/*" onchange="previewScene(event)"><span class="upload-icon">▧</span><span><b>Attach scene / studio reference</b><small>Kept on-device for visual reference</small></span></label><div class="preview" id="scenePreview"><img id="scenePreviewImg"><span id="sceneFileName"></span></div>':"";
+   return '<section class="card" id="card_'+s.key+'"><div class="card-head"><div class="card-title-wrap"><span class="num">'+sectionIndex(s)+'</span><div><h3>'+esc(s.title)+'</h3>'+(s.desc?'<p class="desc">'+esc(s.desc)+'</p>':'')+'</div></div><span class="mode'+any+'">'+mode+'</span></div><div class="'+cls+'">'+opts+'</div>'+customInput+upload+'</section>';
+ }).join("");
+ updateUI();
+}
+
+function selectOption(key,index,el){
+ const s=sections.find(x=>x.key===key); const val=optionText(s.options[index]);
+ if(s.mode==="single"){
+   state[key]=state[key][0]===val?[]:[val];
+ }else{
+   state[key]=state[key].includes(val)?state[key].filter(v=>v!==val):[...state[key],val];
+ }
+ updateUI();
+}
+function addCustom(key){
+ const input=document.getElementById("custom_"+key); if(!input)return;
+ const v=input.value.trim(); if(!v)return;
+ const s=sections.find(x=>x.key===key);
+ if(s.mode==="single") state[key]=[v]; else if(!state[key].includes(v)) state[key].push(v);
+ custom[key]=v; input.value=""; updateUI(); toast("Custom trait added");
+}
+
+function updateUI(){
+ document.querySelectorAll(".opt").forEach(el=>{
+   const k=el.dataset.key,v=el.dataset.value;
+   el.classList.toggle("selected",state[k]&&state[k].includes(v));
+ });
+ let traits=Object.values(state).reduce((a,b)=>a+b.length,0);
+ let filled=Object.values(state).filter(v=>v.length).length;
+ document.getElementById("metricSelected").textContent=traits;
+ document.getElementById("bottomCount").textContent=traits;
+ document.getElementById("sectionCount").textContent=filled;
+ const ready=Math.round((filled/sections.length)*100);
+ document.getElementById("metricReady").textContent=ready+"%";
+ document.getElementById("readyBar").style.width=ready+"%";
+ document.getElementById("qualityBar").style.width=Math.min(100,ready+(traits>12?8:0))+"%";
+}
+
+function first(key){return state[key]?.[0]||""}
+function any(key){return state[key]||[]}
+function pick(key,preferred){
+ const s=sections.find(x=>x.key===key);
+ const values=s.options.map(optionText);
+ const candidate=preferred&&values.includes(preferred)?preferred:values[Math.floor(Math.random()*values.length)];
+ state[key]=s.mode==="multi"?[candidate]:[candidate];
+}
+function smartFill(){
+ const defaults={
+   gender:"Female",age:"Young Adult (25–34)",ethnicity:"Indian",body:"Lean",hair:"Long Waves",hairColor:"Chestnut Brown",
+   eyes:"Deep Brown",skin:"Medium",render:"Hyper-Realistic Photography",personality:"Confident",role:"Influencer",
+   expression:"Confident Smile",pose:"Relaxed Standing",dressing:"Smart Casual (Shirt & Jeans)",scene:"Minimalist Interior",
+   lighting:"Soft Window Light",camera:"85mm Portrait Lens",framing:"Medium Portrait",ratio:"9:16 Vertical / Reels"
+ };
+ sections.forEach(s=>{if(!state[s.key].length)pick(s.key,defaults[s.key])});
+ updateUI();
+}
+function surpriseMe(){
+ sections.forEach(s=>{
+   const count=s.mode==="multi"?(Math.random()>.65?2:1):1;
+   const vals=[...s.options].sort(()=>Math.random()-.5).slice(0,count).map(optionText);
+   state[s.key]=vals;
+ });
+ updateUI();toast("Fresh character generated");
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+const presets={
+ influencer:{gender:"Female",age:"Young (18–24)",ethnicity:"Indian",body:"Curvy",hair:"Long Waves",hairColor:"Chestnut Brown",eyes:"Deep Brown",skin:"Medium",render:"Hyper-Realistic Photography",personality:["Confident","Charismatic"],role:["Influencer"],expression:["Confident Smile"],pose:["Relaxed Standing"],dressing:"Chic Streetwear",scene:"Minimalist Interior",lighting:["Soft Window Light"],camera:["85mm Portrait Lens","Shallow Depth of Field"],framing:"Medium Portrait",ratio:"9:16 Vertical / Reels"},
+ editorial:{gender:"Female",age:"Young Adult (25–34)",ethnicity:"European",body:"Tall / Statuesque",hair:"Sleek Ponytail",hairColor:"Obsidian Black",eyes:"Emerald Green",skin:"Fair",render:"Editorial Fashion",personality:["Elegant","Sophisticated"],role:["Fashion Model"],expression:["Serious / Stoic"],pose:["Dynamic Fashion Pose"],dressing:"Luxury Designer Outfit",scene:"Seamless Studio Backdrop (Black)",lighting:["Beauty Dish","Cinematic Key Light"],camera:["85mm Portrait Lens","f/1.4 Look"],framing:"Full Body",ratio:"4:5 Portrait"},
+ cinematic:{gender:"Male",age:"Young Adult (25–34)",ethnicity:"Indian",body:"Athletic / Fit",hair:"Wolfcut",hairColor:"Obsidian Black",eyes:"Deep Brown",skin:"Tan",render:"Cinematic Film",personality:["Introspective","Mysterious"],role:["Actor"],expression:["Thoughtful Gaze"],pose:["Looking Over Shoulder"],dressing:"Minimal Monochrome",scene:"Urban Street",lighting:["Dramatic Chiaroscuro","Volumetric Light"],camera:["50mm Natural Perspective","Shallow Depth of Field"],framing:"Three-Quarter Body",ratio:"16:9 Widescreen"},
+ anime:{gender:"Female",age:"Young (18–24)",ethnicity:"Asian",body:"Petite",hair:"Long Waves",hairColor:"Pastel Pink",eyes:"Ocean Blue",skin:"Fair",render:"Anime / Manga",personality:["Playful","Bold"],role:["Musician / Artist"],expression:["Playful Wink"],pose:["Dynamic Fashion Pose"],dressing:"Futuristic Fashion",scene:"Neon Cityscape",lighting:["Neon Rim Light"],camera:["35mm Environmental"],framing:"Full Body",ratio:"9:16 Vertical / Reels"},
+ product:{gender:"Male",age:"Young Adult (25–34)",ethnicity:"Indian",body:"Athletic / Fit",hair:"Crew Cut",hairColor:"Obsidian Black",eyes:"Deep Brown",skin:"Medium",render:"Luxury Commercial",personality:["Confident","Sophisticated"],role:["Fashion Model"],expression:["Neutral Calm"],pose:["Low-Angle Power Pose"],dressing:"Business Casual (Blazer & Chinos)",scene:"Seamless Studio Backdrop (White)",lighting:["Studio Softbox"],camera:["85mm Portrait Lens","Deep Focus"],framing:"Three-Quarter Body",ratio:"4:5 Portrait"}
+};
+function applyPreset(name){
+ resetStateOnly();
+ const p=presets[name]; Object.keys(p).forEach(k=>state[k]=Array.isArray(p[k])?p[k]:[p[k]]);
+ updateUI();toast("Preset applied");
+}
+function resetStateOnly(){Object.keys(state).forEach(k=>state[k]=[])}
+function resetAll(){
+ resetStateOnly();
+ document.querySelectorAll(".custom-input,.textarea").forEach(e=>e.value="");
+ const p=document.getElementById("scenePreview"); if(p)p.style.display="none";
+ updateUI();toast("Studio reset");
+}
+
+document.getElementById("detailRange").addEventListener("input",e=>{
+ document.getElementById("detailLabel").textContent=({1:"Clean",2:"Rich",3:"Max"})[e.target.value]
+});
+
+function previewScene(e){
+ const file=e.target.files&&e.target.files[0]; if(!file)return;
+ const url=URL.createObjectURL(file);
+ document.getElementById("scenePreviewImg").src=url;
+ document.getElementById("sceneFileName").textContent=file.name;
+ document.getElementById("scenePreview").style.display="block";
+ toast("Scene reference attached");
+}
+
+function list(arr){return arr.filter(Boolean).join(", ")}
+function sentencePart(label,val){return val?label+val+". ":""}
+function ratioCode(){
+ const r=first("ratio");
+ if(r.startsWith("1:1"))return"1:1";if(r.startsWith("4:5"))return"4:5";if(r.startsWith("9:16"))return"9:16";
+ if(r.startsWith("16:9"))return"16:9";if(r.startsWith("3:4"))return"3:4";if(r.startsWith("4:3"))return"4:3";return"9:16";
+}
+function modelSuffix(ratio){
+ const stylize=document.getElementById("stylize").value;
+ if(currentModel==="Midjourney"){
+   const s={natural:50,balanced:150,creative:350,extreme:700}[stylize];
+   return " --ar "+ratio+" --stylize "+s;
+ }
+ if(currentModel==="FLUX")return " Aspect ratio: "+ratio+".";
+ if(currentModel==="Kling")return " Output framing: "+ratio+", preserve consistent facial identity and natural motion-readiness.";
+ if(currentModel==="Higgsfield")return " Framing "+ratio+", premium commercial character aesthetic, strong face consistency.";
+ if(currentModel==="ChatGPT Images")return " Compose the final image in "+ratio+" aspect ratio.";
+ return " Aspect ratio "+ratio+".";
+}
+function buildNegative(){
+ let base=[];
+ if(document.getElementById("anatomySafe").checked)base.push("malformed hands","extra fingers","missing fingers","duplicate limbs","broken anatomy","warped facial features");
+ if(document.getElementById("skinSafe").checked)base.push("plastic skin","waxy skin","over-smoothed skin","uncanny texture");
+ base.push("low resolution","blurry face","compression artifacts","watermark","unwanted text","logo");
+ const customNeg=document.getElementById("negativeCustom").value.trim();
+ if(customNeg)base.push(customNeg);
+ return [...new Set(base)].join(", ");
+}
+
+function generatePrompt(){
+ if(document.getElementById("smartFill").checked)smartFill();
+ const traits=Object.values(state).reduce((a,b)=>a+b.length,0);
+ if(!traits){toast("Pick a few traits first");return}
+
+ const density=Number(document.getElementById("detailRange").value);
+ const pro=document.getElementById("promptLanguage").value;
+ const identity=document.getElementById("identityLock").checked;
+ const extra=document.getElementById("otherFeatures").value.trim();
+ const refAttached=document.getElementById("sceneFile")?.files?.length>0;
+
+ let parts=[];
+ parts.push(first("age")+", "+list(any("ethnicity"))+", "+first("gender").toLowerCase()+" character");
+ parts.push(first("body").toLowerCase()+" build");
+ parts.push(first("skin").toLowerCase()+" complexion");
+ parts.push(first("hair").toLowerCase()+" hairstyle in "+first("hairColor").toLowerCase());
+ parts.push(first("eyes")+" eyes");
+ if(any("expression").length)parts.push(list(any("expression")).toLowerCase()+" expression");
+ if(any("personality").length)parts.push(list(any("personality")).toLowerCase()+" demeanor");
+ if(any("role").length)parts.push("presented as "+list(any("role")).toLowerCase());
+
+ let prompt=parts.filter(Boolean).join(", ")+". ";
+ prompt+=first("render")+". ";
+ prompt+=sentencePart("Pose and body language: ",list(any("pose")));
+ prompt+=sentencePart("Wardrobe: ",first("dressing"));
+ prompt+=sentencePart("Environment: ",first("scene"));
+ if(refAttached)prompt+="Use the attached scene reference as the environment/composition reference while preserving the designed character identity. ";
+ prompt+=sentencePart("Lighting: ",list(any("lighting")));
+ prompt+=sentencePart("Camera language: ",list(any("camera")));
+ prompt+=sentencePart("Composition: ",first("framing"));
+
+ if(identity)prompt+="Keep facial identity, age, skin tone, hairstyle and distinctive facial structure consistent across future images of this character. ";
+ if(density>=2)prompt+="Natural human proportions, believable posture, realistic fabric behavior, coherent shadows, accurate material textures, intentional depth separation and professional color grading. ";
+ if(density>=3){
+   if(first("render").includes("Photography")||first("render").includes("Film")||first("render").includes("Editorial")||first("render").includes("Commercial")||first("render").includes("Smartphone")){
+     prompt+="Ultra-detailed natural skin with pores and subtle imperfections, individual hair strands, realistic eyes with physically plausible catchlights, nuanced micro-contrast, high dynamic range without an artificial HDR look, premium editorial finish. ";
+   }else{
+     prompt+="Highly refined silhouette, consistent character design language, controlled shape hierarchy, polished materials, intentional detail density and production-quality finish. ";
+   }
+ }
+ if(extra)prompt+="Distinctive details: "+extra.replace(/\s+/g," ").trim()+". ";
+ if(pro==="Concise")prompt=prompt.replace(/Natural human proportions.*?grading\. /,"").replace(/Ultra-detailed.*?finish\. /,"");
+ if(pro==="Cinematic")prompt+="Emotionally cinematic staging, motivated light sources, atmospheric depth and filmic tonal separation. ";
+ if(pro==="Technical")prompt+="Prioritize optical realism, perspective consistency, accurate depth cues, clean subject separation and controlled exposure. ";
+ prompt+=modelSuffix(ratioCode());
+
+ lastPrompt=prompt.replace(/\s+/g," ").trim();
+ lastNegative=document.getElementById("negativeEnabled").checked?buildNegative():"";
+ activeOutput="main";
+ document.getElementById("promptOutput").textContent=lastPrompt;
+ document.getElementById("outModel").textContent=currentModel;
+ document.getElementById("outTraits").textContent=traits+" traits";
+ document.getElementById("outRatio").textContent=ratioCode();
+ setTabs();
+ document.getElementById("resultModal").classList.add("show");
+ localStorage.setItem("cb_last_prompt",lastPrompt);
+}
+function setTabs(){
+ document.getElementById("tabMain").classList.toggle("active",activeOutput==="main");
+ document.getElementById("tabNegative").classList.toggle("active",activeOutput==="negative");
+ document.getElementById("promptOutput").textContent=activeOutput==="main"?lastPrompt:(lastNegative||"Negative prompt is disabled.");
+}
+function showOutput(which){activeOutput=which;setTabs()}
+function copyOutput(){
+ const txt=activeOutput==="main"?lastPrompt:lastNegative;if(!txt)return;
+ if(window.Android&&Android.copy)Android.copy(txt);else navigator.clipboard?.writeText(txt);
+ toast("Copied");
+}
+function shareOutput(){
+ const txt=activeOutput==="main"?lastPrompt:lastNegative;if(!txt)return;
+ if(window.Android&&Android.share)Android.share(txt);else if(navigator.share)navigator.share({text:txt});
+}
+function saveHistory(){
+ if(!lastPrompt)return;
+ let h=JSON.parse(localStorage.getItem("cb_history")||"[]");
+ h.unshift({prompt:lastPrompt,negative:lastNegative,model:currentModel,ratio:ratioCode(),time:Date.now()});
+ h=h.slice(0,30);localStorage.setItem("cb_history",JSON.stringify(h));toast("Saved to history");
+}
+function openHistory(){
+ renderHistory();document.getElementById("historyModal").classList.add("show")
+}
+function renderHistory(){
+ const el=document.getElementById("historyList");let h=JSON.parse(localStorage.getItem("cb_history")||"[]");
+ if(!h.length){el.innerHTML='<div class="empty">No saved prompts yet.<br>Generate a character and tap Save.</div>';return}
+ el.innerHTML=h.map((x,i)=>'<div class="history-item"><div class="hmeta"><span>'+esc(x.model)+' • '+esc(x.ratio)+'</span><span>'+new Date(x.time).toLocaleDateString()+'</span></div><p>'+esc(x.prompt)+'</p><button onclick="reuseHistory('+i+')">Open prompt</button></div>').join("");
+}
+function reuseHistory(i){
+ const h=JSON.parse(localStorage.getItem("cb_history")||"[]");const x=h[i];if(!x)return;
+ lastPrompt=x.prompt;lastNegative=x.negative||"";currentModel=x.model||"Universal";renderModels();
+ closeModal("historyModal");activeOutput="main";setTabs();document.getElementById("resultModal").classList.add("show")
+}
+function closeModal(id){document.getElementById(id).classList.remove("show")}
+function modalBackdrop(e,id){if(e.target.id===id)closeModal(id)}
+function handleNativeBack(){
+ const r=document.getElementById("resultModal"),h=document.getElementById("historyModal");
+ if(r.classList.contains("show")){closeModal("resultModal");return true}
+ if(h.classList.contains("show")){closeModal("historyModal");return true}
+ return false
+}
+function toast(msg){
+ const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");
+ clearTimeout(window.__tt);window.__tt=setTimeout(()=>el.classList.remove("show"),1600)
+}
+
+renderModels();
+renderSections();
+</script>
+</body>
+</html>
