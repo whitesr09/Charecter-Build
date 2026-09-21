@@ -273,6 +273,88 @@ select{
   .options{grid-template-columns:repeat(3,minmax(0,1fr))}
   .hero-grid{grid-template-columns:repeat(4,1fr)}
 }
+
+/* Settings + alternate minimal theme */
+.settings-screen{display:none;position:fixed;inset:0;z-index:70;background:var(--bg);color:var(--text);overflow:auto}
+.settings-screen.show{display:block}
+.settings-shell{max-width:860px;margin:0 auto;padding:12px 16px 36px}
+.settings-top{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:12px;padding:8px 0 14px;background:var(--bg)}
+.settings-top button{width:40px;height:40px;border-radius:13px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-size:20px}
+.settings-top h2{margin:0;font-size:23px;letter-spacing:-.03em}
+.settings-label{font-size:11px;color:var(--muted);font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin:22px 2px 10px}
+.theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.theme-choice{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:20px;padding:14px;text-align:left;min-height:112px;position:relative}
+.theme-choice.active{border-color:rgba(121,93,255,.7);box-shadow:inset 0 0 0 1px rgba(121,93,255,.15)}
+.theme-preview{height:43px;border-radius:11px;margin-bottom:11px;border:1px solid var(--border);overflow:hidden;display:flex;gap:5px;padding:6px}
+.theme-preview.studio{background:linear-gradient(135deg,#10131b,#090b10)}
+.theme-preview.studio i{display:block;flex:1;border-radius:6px;background:linear-gradient(135deg,#6658ff,#00c7b7)}
+.theme-preview.minimal{background:#111217}.theme-preview.minimal i{display:block;width:26%;border-radius:4px;background:#24262d}
+.theme-choice b{font-size:13px;display:block}.theme-choice small{font-size:10px;color:var(--muted);display:block;margin-top:3px}
+.theme-choice .check{position:absolute;right:11px;top:10px;width:20px;height:20px;border-radius:50%;display:none;place-items:center;background:linear-gradient(135deg,var(--purple),var(--cyan));color:white;font-size:11px}
+.theme-choice.active .check{display:grid}
+.appearance-box{display:none;margin-top:12px;border:1px solid var(--border);background:var(--surface);border-radius:18px;padding:13px}
+.appearance-box.show{display:block}
+.segment{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px;padding:4px;background:var(--surface2);border-radius:13px}
+.segment button{border:0;border-radius:10px;padding:10px;background:transparent;color:var(--muted);font-size:12px}
+.segment button.active{background:var(--surface3);color:var(--text);box-shadow:0 1px 5px rgba(0,0,0,.13)}
+.developer-card{margin-top:12px;border:1px solid var(--border);border-radius:24px;background:var(--surface);padding:23px 18px 20px;text-align:center}
+.developer-card .green{color:#00d99b;font-size:11px;font-weight:850;letter-spacing:.06em}
+.developer-card h3{font-size:23px;margin:14px 0 5px;letter-spacing:-.03em}
+.developer-card p{color:var(--muted);margin:0;font-size:14px}
+.social-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:26px 0 22px}
+.social-btn{border:0;background:transparent;color:var(--text);padding:6px;text-align:center}
+.social-btn svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:1.8}
+.social-btn span{display:block;color:var(--muted);font-size:11px;margin-top:9px}
+.dev-divider{height:1px;background:var(--border);margin:7px 0 19px}
+.dev-version{font-size:10px;color:var(--muted);font-weight:800;letter-spacing:.06em}
+.madeby{margin-top:12px;font-size:14px;font-weight:900;letter-spacing:.28em}
+
+/* Minimal theme changes the complete visual treatment while preserving every feature */
+body.theme-minimal{background:var(--bg)}
+body.theme-minimal .shell{padding-left:18px;padding-right:18px}
+body.theme-minimal .topbar{margin:0 -18px;padding-left:18px;padding-right:18px;background:var(--bg);backdrop-filter:none;border-bottom:1px solid var(--border)}
+body.theme-minimal .logo{background:var(--surface2);box-shadow:none;border:1px solid var(--border);color:var(--text)}
+body.theme-minimal .brand-sub{display:none}
+body.theme-minimal .iconbtn{background:transparent;border-color:transparent}
+body.theme-minimal .hero{padding:24px 0 8px}
+body.theme-minimal .kicker{color:var(--muted);letter-spacing:.11em}
+body.theme-minimal h1{font-size:29px;line-height:1.12;margin-top:7px}
+body.theme-minimal .grad{background:none;color:var(--text);-webkit-text-fill-color:var(--text)}
+body.theme-minimal .hero p{font-size:13px;line-height:1.5}
+body.theme-minimal .hero-grid{gap:8px;margin-top:14px}
+body.theme-minimal .metric{background:transparent;border:0;border-top:1px solid var(--border);border-radius:0;padding:10px 0}
+body.theme-minimal .metric strong{font-size:17px}
+body.theme-minimal .progress{height:2px;background:var(--surface2)}
+body.theme-minimal .section-label{margin-top:18px}
+body.theme-minimal .section-label h2{font-size:11px}
+body.theme-minimal .model-chip{background:transparent;border-radius:12px}
+body.theme-minimal .model-chip.active{box-shadow:none;background:var(--surface2);border-color:var(--border2)}
+body.theme-minimal .preset{background:transparent;border-radius:14px;min-width:128px}
+body.theme-minimal .smart-card{background:transparent;border-radius:18px;box-shadow:none}
+body.theme-minimal .card{background:transparent;border-radius:18px;padding:15px 14px;box-shadow:none;margin:10px 0}
+body.theme-minimal .card h3{font-size:17px}
+body.theme-minimal .mode{background:transparent}
+body.theme-minimal .opt{background:transparent;border-radius:13px;min-height:53px}
+body.theme-minimal .opt.selected{background:var(--surface2);box-shadow:none;border-color:var(--border2)}
+body.theme-minimal .opt.selected:after{background:var(--text);color:var(--bg)}
+body.theme-minimal .custom-input,body.theme-minimal .textarea,body.theme-minimal select,body.theme-minimal .upload,body.theme-minimal .feature{background:transparent}
+body.theme-minimal .bottom{background:linear-gradient(180deg,transparent,var(--bg) 42%)}
+body.theme-minimal .bottom-inner{border-radius:16px;background:var(--bg);backdrop-filter:none;box-shadow:none}
+body.theme-minimal .generate{background:var(--text);color:var(--bg);box-shadow:none;border-radius:12px}
+body.theme-minimal .reset{background:transparent;border-radius:12px}
+body.theme-minimal .sheet{background:var(--bg);border-radius:20px 20px 0 0}
+body.theme-minimal .output,body.theme-minimal .score,body.theme-minimal .tab,body.theme-minimal .sheet-actions button,body.theme-minimal .history-item{background:var(--surface);box-shadow:none}
+
+/* Minimal light */
+body.theme-minimal.light{
+ --bg:#f7f7f9;--surface:#ffffff;--surface2:#eeeeF2;--surface3:#e4e5ea;
+ --border:rgba(15,18,28,.10);--border2:rgba(15,18,28,.16);--text:#17181d;--muted:#70737e;--muted2:#9b9ea8;
+ --shadow:0 10px 28px rgba(20,20,30,.08)
+}
+body.theme-minimal.light .opt,body.theme-minimal.light .custom-input,body.theme-minimal.light .textarea,body.theme-minimal.light select,body.theme-minimal.light .upload,body.theme-minimal.light .feature{color:var(--text)}
+body.theme-minimal.light .swatch{border-color:#d4d6dc}
+body.theme-minimal.light .sheet-actions button,body.theme-minimal.light .close,body.theme-minimal.light .settings-top button{color:var(--text)}
+
 </style>
 </head>
 <body>
@@ -289,6 +371,7 @@ select{
       <div class="top-actions">
         <button class="iconbtn" onclick="surpriseMe()" aria-label="Surprise me">⚄</button>
         <button class="iconbtn" onclick="openHistory()" aria-label="History">◷</button>
+        <button class="iconbtn" onclick="openSettings()" aria-label="Settings"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21h-4v-.08A1.7 1.7 0 0 0 9 19.37a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.63 15a1.7 1.7 0 0 0-1.55-1.03H3v-4h.08A1.7 1.7 0 0 0 4.63 9a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 9 4.63 1.7 1.7 0 0 0 10.03 3.08V3h4v.08A1.7 1.7 0 0 0 15.06 4.63a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06A1.7 1.7 0 0 0 19.43 9a1.7 1.7 0 0 0 1.55 1.03H21v4h-.08A1.7 1.7 0 0 0 19.4 15Z"/></svg></button>
       </div>
     </div>
   </div>
@@ -359,6 +442,70 @@ select{
   </section>
 </div>
 
+
+<div class="settings-screen" id="settingsScreen">
+  <div class="settings-shell">
+    <div class="settings-top">
+      <button onclick="closeSettings()" aria-label="Back">‹</button>
+      <h2>Settings</h2>
+    </div>
+
+    <div class="settings-label">Theme</div>
+    <div class="theme-grid">
+      <button class="theme-choice" id="themeStudio" onclick="setTheme('studio')">
+        <span class="check">✓</span>
+        <div class="theme-preview studio"><i></i><i></i><i></i></div>
+        <b>Studio</b><small>Current look • Default</small>
+      </button>
+      <button class="theme-choice" id="themeMinimal" onclick="setTheme('minimal')">
+        <span class="check">✓</span>
+        <div class="theme-preview minimal"><i></i><i></i><i></i></div>
+        <b>Minimal</b><small>Cleaner, simpler, quieter UI</small>
+      </button>
+    </div>
+
+    <div class="appearance-box" id="minimalAppearance">
+      <b style="font-size:13px">Minimal appearance</b>
+      <div class="segment">
+        <button id="minimalDark" onclick="setMinimalMode('dark')">Dark</button>
+        <button id="minimalLight" onclick="setMinimalMode('light')">Light</button>
+      </div>
+    </div>
+
+    <div class="settings-label">On this device</div>
+    <div class="card" style="margin-top:0">
+      <div style="font-size:13px;font-weight:750">Private by default</div>
+      <div class="desc" style="font-size:12px;margin-top:7px">Theme preference, prompt history and saved settings stay on your device.</div>
+    </div>
+
+    <div class="settings-label">Developer</div>
+    <div class="developer-card">
+      <div class="green">STAY CONNECTED</div>
+      <h3>Made for your next idea.</h3>
+      <p>Follow N S H D</p>
+
+      <div class="social-row">
+        <button class="social-btn" onclick="openExternal('https://www.instagram.com/__nshd.__?stkn=emExd3hxZndzN21o')">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <span>Instagram</span>
+        </button>
+        <button class="social-btn" onclick="openExternal('https://wa.me/+918590455801')">
+          <svg viewBox="0 0 24 24"><path d="M20 11.8a8 8 0 0 1-11.8 7L4 20l1.3-4A8 8 0 1 1 20 11.8Z"/><path d="M8.5 8.3c.3 2.8 2.4 5.1 5.2 6l1.5-1.5c.2-.2.5-.3.8-.2l2 .7"/></svg>
+          <span>WhatsApp</span>
+        </button>
+        <button class="social-btn" onclick="openExternal('https://t.me/nshd_0')">
+          <svg viewBox="0 0 24 24"><path d="m21 4-3 16-6-4-3 3 .5-4.5L18 7 7.5 13.5 3 12Z"/><path d="m9.5 14.5 2.5 1.5"/></svg>
+          <span>Telegram</span>
+        </button>
+      </div>
+
+      <div class="dev-divider"></div>
+      <div class="dev-version">CHARACTER BUILD / 1.2.0</div>
+      <div class="madeby">MADE BY N S H D</div>
+    </div>
+  </div>
+</div>
+
 <div class="bottom">
   <div class="bottom-inner">
     <div class="countbox"><b><span id="bottomCount">0</span> traits</b><small><span id="sectionCount">0</span>/19 sections</small></div>
@@ -395,34 +542,40 @@ let lastNegative="";
 let activeOutput="main";
 
 const sections=[
-{key:"gender",title:"Gender",mode:"single",desc:"Choose the character's gender presentation.",options:["Female","Male","Non-binary","Androgynous"]},
-{key:"age",title:"Age Range",mode:"single",options:["Young (18–24)","Young Adult (25–34)","Mature (35–50)","Senior (51+)"]},
-{key:"ethnicity",title:"Ethnicity / Origin",mode:"multi",desc:"Mixed heritage combinations are welcome.",options:["African","Asian","European","Indian","Middle Eastern","Indigenous","Latino / Hispanic","American","South Asian","East Asian","Mixed Heritage"]},
-{key:"body",title:"Body Type",mode:"single",options:["Athletic / Fit","Lean","Curvy","Petite","Tall / Statuesque","Muscular","Average","Broad-Shouldered","Plus Size"]},
+{key:"gender",title:"Gender",mode:"single",desc:"Choose the character's gender presentation.",options:["Female","Male","Non-binary","Androgynous","Gender-neutral"]},
+{key:"age",title:"Age Range",mode:"single",options:["Young (18–24)","Young Adult (25–34)","Adult (35–44)","Mature (45–54)","Mature (55–64)","Senior (65+)"]},
+{key:"ethnicity",title:"Ethnicity / Origin",mode:"multi",desc:"Mixed heritage combinations are welcome.",options:["African","North African","East Asian","South Asian","Southeast Asian","Central Asian","European","Indian","Middle Eastern","Indigenous","Latino / Hispanic","Caribbean","Pacific Islander","American","Mixed Heritage"]},
+{key:"body",title:"Body Type",mode:"single",options:["Athletic / Fit","Lean","Slim","Curvy","Petite","Tall / Statuesque","Muscular","Average","Broad-Shouldered","Plus Size","Stocky","Lithe / Slender"]},
 {key:"hair",title:"Hair Style",mode:"single",visual:true,options:[
   {t:"Long Waves",i:"〰"},{t:"Short Pixie",i:"✦"},{t:"Afro",i:"●"},{t:"Bob Cut",i:"◒"},{t:"Braids",i:"≋"},{t:"Sleek Ponytail",i:"◜"},
-  {t:"Buzzcut",i:"◡"},{t:"Wolfcut",i:"⌁"},{t:"Crew Cut",i:"◠"},{t:"Fade",i:"⌒"},{t:"Pompadour",i:"◕"},{t:"Man Bun",i:"◉"},{t:"Slicked Back",i:"⌁"},{t:"Curly Top",i:"❦"}
+  {t:"Buzzcut",i:"◡"},{t:"Wolfcut",i:"⌁"},{t:"Crew Cut",i:"◠"},{t:"Fade",i:"⌒"},{t:"Pompadour",i:"◕"},{t:"Man Bun",i:"◉"},
+  {t:"Slicked Back",i:"⌁"},{t:"Curly Top",i:"❦"},{t:"Curtain Bangs",i:"⌇"},{t:"Messy Fringe",i:"≋"},{t:"Shoulder-Length Straight",i:"∥"},
+  {t:"Soft Curls",i:"≈"},{t:"High Ponytail",i:"◝"},{t:"Low Bun",i:"◉"},{t:"French Bob",i:"◒"}
 ]},
 {key:"hairColor",title:"Hair Color",mode:"single",visual:true,options:[
-  {t:"Obsidian Black",c:"#17181d"},{t:"Platinum Blonde",c:"#f4e9c8"},{t:"Chestnut Brown",c:"#7d4229"},{t:"Copper Red",c:"#d95f2f"},
-  {t:"Ash Grey",c:"#b7bac3"},{t:"Pastel Pink",c:"#e9a5c7"},{t:"Emerald Green",c:"#097c60"},{t:"Honey Blonde",c:"#e9aa31"},{t:"Midnight Blue",c:"#173f75"}
+  {t:"Obsidian Black",c:"#17181d"},{t:"Natural Black",c:"#242225"},{t:"Dark Brown",c:"#3b261f"},{t:"Chestnut Brown",c:"#7d4229"},
+  {t:"Chocolate Brown",c:"#5b3328"},{t:"Light Brown",c:"#a06c43"},{t:"Honey Blonde",c:"#e9aa31"},{t:"Platinum Blonde",c:"#f4e9c8"},
+  {t:"Ash Blonde",c:"#d3c9ad"},{t:"Copper Red",c:"#d95f2f"},{t:"Auburn",c:"#8d382d"},{t:"Ash Grey",c:"#b7bac3"},
+  {t:"Silver",c:"#d9dde4"},{t:"Pastel Pink",c:"#e9a5c7"},{t:"Emerald Green",c:"#097c60"},{t:"Midnight Blue",c:"#173f75"}
 ]},
 {key:"eyes",title:"Eye Color",mode:"single",visual:true,options:[
-  {t:"Deep Brown",eye:"#5a3018"},{t:"Ocean Blue",eye:"#168cdb"},{t:"Emerald Green",eye:"#00a878"},{t:"Amber",eye:"#e39a16"},{t:"Hazel",eye:"#829351"},{t:"Grey",eye:"#9aa7b4"},{t:"Heterochromia",eye:"linear-gradient(90deg,#168cdb 50%,#9b551e 50%)"}
+  {t:"Deep Brown",eye:"#5a3018"},{t:"Light Brown",eye:"#8d5b2d"},{t:"Hazel",eye:"#829351"},{t:"Amber",eye:"#e39a16"},
+  {t:"Emerald Green",eye:"#00a878"},{t:"Forest Green",eye:"#477a56"},{t:"Ocean Blue",eye:"#168cdb"},{t:"Ice Blue",eye:"#91cfe8"},
+  {t:"Grey",eye:"#9aa7b4"},{t:"Violet",eye:"#7264a7"},{t:"Heterochromia",eye:"linear-gradient(90deg,#168cdb 50%,#9b551e 50%)"}
 ]},
-{key:"skin",title:"Skin & Complexion",mode:"single",options:["Porcelain / Very Fair","Fair","Light","Medium","Olive","Tan","Brown","Deep Brown","Ebony"]},
-{key:"render",title:"Base Rendering Style",mode:"single",options:["Hyper-Realistic Photography","Cinematic Film","Editorial Fashion","Luxury Commercial","Natural Smartphone Photo","3D Animation","2D Animation","Anime / Manga","Graphic Novel","Painterly Realism"]},
-{key:"personality",title:"Personality",mode:"multi",options:["Confident","Playful","Mysterious","Elegant","Bold","Serene","Rebellious","Sophisticated","Charismatic","Introspective","Friendly","Reserved","Energetic"]},
-{key:"role",title:"Role",mode:"multi",options:["Fashion Model","Influencer","Streetwear Influencer","Fitness Coach","Travel Vlogger","Gamer / Streamer","Musician / Artist","Beauty Creator","Tech Reviewer","Student","Entrepreneur","Actor","Athlete"]},
-{key:"expression",title:"Expression",mode:"multi",options:["Confident Smile","Soft Smile","Smirk","Serious / Stoic","Playful Wink","Warm Laugh","Neutral Calm","Intense Stare","Thoughtful Gaze","Looking Away"]},
-{key:"pose",title:"Pose & Body Language",mode:"multi",options:["Relaxed Standing","Walking Candidly","Seated Casual","Leaning Against Wall","Arms Crossed","Hands in Pockets","Dynamic Fashion Pose","Looking Over Shoulder","Natural Mid-Motion","Low-Angle Power Pose"]},
-{key:"dressing",title:"Dressing",mode:"single",desc:"Pick a preset or add your own.",options:["Streetwear (Hoodie & Cargo Pants)","Business Casual (Blazer & Chinos)","Athletic Wear (Tracksuit)","Smart Casual (Shirt & Jeans)","Plain T-Shirt & Jeans","Kerala Traditional Saree","Kerala Mundu & Shirt","Chic Streetwear","Elegant Evening Dress","Minimal Monochrome","Luxury Designer Outfit","Futuristic Fashion"]},
-{key:"scene",title:"Background / Scene",mode:"single",desc:"Choose a setting, describe your own, or attach a visual reference.",upload:true,options:["Seamless Studio Backdrop (White)","Seamless Studio Backdrop (Black)","Urban Street","Indoor Loft","Beach / Coastal","Neon Cityscape","Minimalist Interior","Nature / Forest","Luxury Interior","Rooftop at Golden Hour","Kerala Heritage Interior","Café / Lifestyle"]},
-{key:"lighting",title:"Lighting Design",mode:"multi",options:["Soft Window Light","Golden Hour","Cinematic Key Light","Dramatic Chiaroscuro","Studio Softbox","Beauty Dish","Neon Rim Light","Volumetric Light","Overcast Daylight","Hard Direct Flash","Sunset Backlight"]},
-{key:"camera",title:"Camera & Lens",mode:"multi",options:["24mm Wide Angle","35mm Environmental","50mm Natural Perspective","85mm Portrait Lens","105mm Telephoto Portrait","Smartphone Main Camera","Smartphone Portrait Mode","Shallow Depth of Field","Deep Focus","f/1.4 Look","f/2.8 Look"]},
-{key:"framing",title:"Framing & Composition",mode:"single",options:["Extreme Close-Up","Close-Up Portrait","Head & Shoulders","Medium Portrait","Three-Quarter Body","Full Body","Wide Environmental Portrait","Eye-Level","Slight Low Angle","Slight High Angle"]},
+{key:"skin",title:"Skin & Complexion",mode:"single",options:["Porcelain / Very Fair","Fair","Light","Light-Medium","Medium","Olive","Warm Beige","Tan","Caramel","Brown","Deep Brown","Ebony"]},
+{key:"render",title:"Base Rendering Style",mode:"single",options:["Hyper-Realistic Photography","Natural Smartphone Photo","Cinematic Film","Editorial Fashion","Luxury Commercial","Beauty Campaign","Lifestyle Photography","Documentary Candid","Film Photography","3D Animation","2D Animation","Anime / Manga","Graphic Novel","Painterly Realism"]},
+{key:"personality",title:"Personality",mode:"multi",options:["Confident","Playful","Mysterious","Elegant","Bold","Serene","Rebellious","Sophisticated","Charismatic","Introspective","Friendly","Reserved","Energetic","Warm","Minimal","Edgy","Approachable","Composed"]},
+{key:"role",title:"Role",mode:"multi",options:["Fashion Model","Influencer","Streetwear Influencer","Fitness Coach","Travel Vlogger","Gamer / Streamer","Musician / Artist","Beauty Creator","Tech Reviewer","Student","Entrepreneur","Actor","Athlete","Photographer","Designer","Chef","Professional / Executive","Content Creator"]},
+{key:"expression",title:"Expression",mode:"multi",options:["Confident Smile","Soft Smile","Subtle Smile","Smirk","Serious / Stoic","Playful Wink","Warm Laugh","Neutral Calm","Intense Stare","Thoughtful Gaze","Looking Away","Candid Mid-Laugh","Relaxed","Determined","Curious"]},
+{key:"pose",title:"Pose & Body Language",mode:"multi",options:["Relaxed Standing","Walking Candidly","Seated Casual","Leaning Against Wall","Arms Crossed","Hands in Pockets","Dynamic Fashion Pose","Looking Over Shoulder","Natural Mid-Motion","Low-Angle Power Pose","One Hand in Pocket","Adjusting Jacket","Seated Forward Lean","Standing Three-Quarter Turn","Casual Side Profile","Direct Front Pose"]},
+{key:"dressing",title:"Dressing",mode:"single",desc:"Pick a preset or add your own.",options:["Streetwear (Hoodie & Cargo Pants)","Oversized Streetwear","Business Casual (Blazer & Chinos)","Athletic Wear (Tracksuit)","Smart Casual (Shirt & Jeans)","Plain T-Shirt & Jeans","Minimal Monochrome","Luxury Designer Outfit","Futuristic Fashion","Vintage Casual","Denim Layering","Linen Summer Outfit","Formal Suit","Kerala Traditional Saree","Kerala Mundu & Shirt","Chic Streetwear","Elegant Evening Dress","Business Casual (Blouse & Skirt)","Athleisure","Fitted T-Shirt & Jeans"]},
+{key:"scene",title:"Background / Scene",mode:"single",desc:"Choose a setting, describe your own, or attach a visual reference.",upload:true,options:["Seamless Studio Backdrop (White)","Seamless Studio Backdrop (Black)","Soft Grey Studio","Warm Beige Studio","Minimalist Interior","Modern Apartment","Indoor Loft","Luxury Interior","Urban Street","Downtown Night Street","Rooftop at Golden Hour","Beach / Coastal","Nature / Forest","Mountain View","Café / Lifestyle","Office / Workspace","Gym / Fitness Studio","Neon Cityscape","Kerala Heritage Interior","Kerala Courtyard","Clean Product Studio","Airport / Travel Setting"]},
+{key:"lighting",title:"Lighting Design",mode:"multi",options:["Soft Window Light","Golden Hour","Blue Hour","Cinematic Key Light","Dramatic Chiaroscuro","Studio Softbox","Large Diffused Softbox","Beauty Dish","Butterfly Lighting","Rembrandt Lighting","Split Lighting","Neon Rim Light","Warm Rim Light","Volumetric Light","Overcast Daylight","Hard Direct Flash","On-Camera Flash","Sunset Backlight","High-Key Commercial","Low-Key Moody"]},
+{key:"camera",title:"Camera & Lens",mode:"multi",options:["24mm Wide Angle","28mm Smartphone Wide","35mm Environmental","50mm Natural Perspective","70mm Portrait","85mm Portrait Lens","105mm Telephoto Portrait","135mm Compressed Portrait","Smartphone Main Camera","Smartphone Portrait Mode","Shallow Depth of Field","Deep Focus","f/1.2 Look","f/1.4 Look","f/1.8 Look","f/2.8 Look","Natural Bokeh","Editorial Sharpness","Film Grain"]},
+{key:"framing",title:"Framing & Composition",mode:"single",options:["Extreme Close-Up","Close-Up Portrait","Head & Shoulders","Chest-Up Portrait","Medium Portrait","Waist-Up Portrait","Three-Quarter Body","Full Body","Wide Environmental Portrait","Centered Symmetry","Rule of Thirds","Eye-Level","Slight Low Angle","Slight High Angle","Direct Front View","Three-Quarter View","Side Profile"]},
 {key:"ratio",title:"Image Dimensions",mode:"single",visual:true,options:[
-  {t:"1:1 Square",i:"□"},{t:"4:5 Portrait",i:"▯"},{t:"9:16 Vertical / Reels",i:"▯"},{t:"16:9 Widescreen",i:"▭"},{t:"3:4 Portrait Tall",i:"▯"},{t:"4:3 Landscape",i:"▭"}
+  {t:"1:1 Square",i:"□"},{t:"4:5 Portrait",i:"▯"},{t:"9:16 Vertical / Reels",i:"▯"},{t:"16:9 Widescreen",i:"▭"},{t:"3:4 Portrait Tall",i:"▯"},{t:"4:3 Landscape",i:"▭"},{t:"2:3 Portrait",i:"▯"},{t:"3:2 Landscape",i:"▭"}
 ]}
 ];
 
@@ -677,7 +830,39 @@ function reuseHistory(i){
 }
 function closeModal(id){document.getElementById(id).classList.remove("show")}
 function modalBackdrop(e,id){if(e.target.id===id)closeModal(id)}
+
+let uiTheme=localStorage.getItem("cb_theme")||"studio";
+let minimalMode=localStorage.getItem("cb_minimal_mode")||"dark";
+
+function applyTheme(){
+  document.body.classList.toggle("theme-minimal",uiTheme==="minimal");
+  document.body.classList.toggle("light",uiTheme==="minimal"&&minimalMode==="light");
+  const studio=document.getElementById("themeStudio"),minimal=document.getElementById("themeMinimal");
+  if(studio)studio.classList.toggle("active",uiTheme==="studio");
+  if(minimal)minimal.classList.toggle("active",uiTheme==="minimal");
+  const box=document.getElementById("minimalAppearance");
+  if(box)box.classList.toggle("show",uiTheme==="minimal");
+  const d=document.getElementById("minimalDark"),l=document.getElementById("minimalLight");
+  if(d)d.classList.toggle("active",minimalMode==="dark");
+  if(l)l.classList.toggle("active",minimalMode==="light");
+  const isLight=uiTheme==="minimal"&&minimalMode==="light";
+  if(window.Android&&Android.setSystemBars)Android.setSystemBars(isLight);
+}
+function setTheme(theme){
+  uiTheme=theme;localStorage.setItem("cb_theme",theme);applyTheme();toast(theme==="studio"?"Studio theme selected":"Minimal theme selected");
+}
+function setMinimalMode(mode){
+  minimalMode=mode;localStorage.setItem("cb_minimal_mode",mode);applyTheme();
+}
+function openSettings(){applyTheme();document.getElementById("settingsScreen").classList.add("show");document.body.style.overflow="hidden"}
+function closeSettings(){document.getElementById("settingsScreen").classList.remove("show");document.body.style.overflow=""}
+function openExternal(url){
+  if(window.Android&&Android.openUrl)Android.openUrl(url);else window.open(url,"_blank");
+}
+
 function handleNativeBack(){
+ const settings=document.getElementById("settingsScreen");
+ if(settings&&settings.classList.contains("show")){closeSettings();return true}
  const r=document.getElementById("resultModal"),h=document.getElementById("historyModal");
  if(r.classList.contains("show")){closeModal("resultModal");return true}
  if(h.classList.contains("show")){closeModal("historyModal");return true}
@@ -690,6 +875,7 @@ function toast(msg){
 
 renderModels();
 renderSections();
+applyTheme();
 </script>
 </body>
 </html>
