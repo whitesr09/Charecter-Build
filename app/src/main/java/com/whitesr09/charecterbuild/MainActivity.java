@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Build;
 import android.provider.Settings;
 import android.view.Window;
+import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -148,7 +150,41 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public String appVersion() {
-            return "1.1.0";
+            return "1.2.0";
+        }
+
+        @JavascriptInterface
+        public void openUrl(String url) {
+            runOnUiThread(() -> {
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.this, "Unable to open link", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        @JavascriptInterface
+        public void setSystemBars(boolean lightMode) {
+            runOnUiThread(() -> {
+                Window window = getWindow();
+                if (lightMode) {
+                    window.setStatusBarColor(Color.rgb(248, 248, 250));
+                    window.setNavigationBarColor(Color.rgb(248, 248, 250));
+                    int flags = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        flags |= View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;
+                    }
+                    window.getDecorView().setSystemUiVisibility(flags);
+                    if (webView != null) webView.setBackgroundColor(Color.rgb(248, 248, 250));
+                } else {
+                    window.setStatusBarColor(Color.rgb(5, 6, 10));
+                    window.setNavigationBarColor(Color.rgb(5, 6, 10));
+                    window.getDecorView().setSystemUiVisibility(0);
+                    if (webView != null) webView.setBackgroundColor(Color.rgb(5, 6, 10));
+                }
+            });
         }
     }
 }
