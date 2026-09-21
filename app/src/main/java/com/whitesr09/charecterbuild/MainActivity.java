@@ -36,6 +36,7 @@ public class MainActivity extends Activity {
 
         webView = new WebView(this);
         webView.setBackgroundColor(Color.rgb(5, 6, 10));
+        webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         setContentView(webView);
 
         WebSettings settings = webView.getSettings();
@@ -49,6 +50,8 @@ public class MainActivity extends Activity {
         settings.setLoadWithOverviewMode(false);
         settings.setUseWideViewPort(false);
         settings.setTextZoom(100);
+        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        settings.setMediaPlaybackRequiresUserGesture(true);
 
         webView.addJavascriptInterface(new NativeBridge(), "Android");
         webView.setWebViewClient(new WebViewClient());
@@ -150,7 +153,7 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public String appVersion() {
-            return "1.5.0";
+            return "1.6.0";
         }
 
         @JavascriptInterface
