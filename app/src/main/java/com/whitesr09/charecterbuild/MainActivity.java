@@ -108,7 +108,7 @@ public class MainActivity extends Activity {
                             if (webView.canGoBack()) {
                                 webView.goBack();
                             } else {
-                                MainActivity.super.onBackPressed();
+                                finish();
                             }
                         }
                     }
