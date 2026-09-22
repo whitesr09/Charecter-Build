@@ -807,6 +807,99 @@ body.theme-minimal.light .bottom-inner{
 .hair-svg{width:44px;height:44px;color:#b9bbc5;display:block}
 body.theme-minimal.light .hair-svg{color:#555862}
 
+
+/* v1.7 compact polish, native-feel flow */
+.completion-track{height:2px;margin:7px 7px 0;border-radius:99px;background:rgba(255,255,255,.05);overflow:hidden}
+.completion-track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--cyan));transition:width .18s ease}
+.topbar,.topbar-inner,.logo,.brand-sub,.brand-title,.iconbtn{transition:height .16s ease,width .16s ease,padding .16s ease,opacity .14s ease,margin .16s ease,font-size .16s ease,border-radius .16s ease}
+.topbar.compact{padding-top:5px;padding-bottom:5px}
+.topbar.compact .topbar-inner{padding-top:0}
+.topbar.compact .brand-sub{opacity:0;max-height:0;margin:0;overflow:hidden}
+.topbar.compact .logo{width:32px;height:32px;border-radius:11px;font-size:16px}
+.topbar.compact .brand-title{font-size:14px}
+.topbar.compact .iconbtn{width:36px;height:36px;flex-basis:36px;border-radius:12px}
+.topbar.compact .ui-icon{width:18px;height:18px}
+.topbar.compact .completion-track{margin-top:4px}
+
+.card{margin:9px 0!important;padding:13px 12px 12px!important;border-radius:20px!important}
+.card-head{margin-bottom:10px!important;gap:8px}
+.card-title-wrap{gap:7px}
+.card h3{font-size:16px!important;line-height:1.2}
+.num{font-size:10px;padding-top:3px;min-width:18px}
+.desc{font-size:10.5px;margin-top:3px;line-height:1.38}
+.card-meta{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex:0 0 auto}
+.mode{font-size:9px!important;padding:5px 8px!important}
+.section-status{font-size:9px;color:var(--muted2);white-space:nowrap}
+.section-status.done{color:#62ddb9}
+.options,.extra-options-wrap{gap:7px!important}
+.opt{min-height:48px!important;padding:7px 7px!important;border-radius:13px!important;font-size:12.5px!important;gap:4px!important}
+.options.three .opt,.extra-options-wrap.three .opt{min-height:66px!important}
+.opt.selected{
+ border-color:rgba(121,93,255,.82)!important;
+ background:linear-gradient(145deg,rgba(121,93,255,.18),rgba(43,83,255,.075))!important;
+ box-shadow:inset 0 0 0 1px rgba(132,112,255,.12)!important
+}
+.opt.selected:after{width:15px!important;height:15px!important;right:5px!important;top:5px!important;font-size:8px!important}
+.hair-svg{width:36px!important;height:38px!important}
+.eye-reference{width:61px!important;height:31px!important}
+.eye-reference svg{width:58px!important;height:31px!important}
+.swatch{width:26px!important;height:26px!important}
+.more-options{min-height:36px!important;margin-top:7px!important;font-size:10.5px!important}
+.custom-row{gap:6px!important;margin-top:8px!important}
+.custom-input,.textarea,.text-input{padding:10px 11px!important;border-radius:13px!important;font-size:12.5px!important}
+.addbtn{min-width:46px!important;min-height:44px!important;border-radius:13px!important}
+.textarea{min-height:78px!important}
+.smart-card{padding:12px!important;border-radius:18px!important;margin-top:10px!important}
+.model-chip{padding:8px 11px!important;font-size:11.5px!important}
+.preset{padding:10px 12px!important;min-width:124px!important}
+.section-label{margin-top:16px!important;margin-bottom:7px!important}
+.hero-grid{gap:7px!important;margin-top:13px!important}
+.metric{padding:10px 11px!important;border-radius:14px!important}
+.metric strong{font-size:17px!important}
+.upload{padding:12px!important;margin-top:9px!important;border-radius:14px!important}
+.feature{padding:9px!important;border-radius:13px!important}
+.inline-grid{gap:7px!important}
+select{padding:10px 28px 10px 10px!important;border-radius:12px!important}
+
+.bottom{padding:19px 12px calc(9px + env(safe-area-inset-bottom))!important;transition:transform .14s ease,opacity .12s ease}
+.bottom-inner{padding:7px!important;border-radius:18px!important;gap:7px!important}
+.countbox{min-width:72px!important;padding:0 5px!important}
+.countbox b{font-size:13.5px!important}
+.countbox small{font-size:9px!important}
+.actions{gap:6px!important}
+.reset{min-height:46px!important;padding:0 11px!important;border-radius:13px!important;font-size:11.5px!important}
+.generate{min-height:46px!important;border-radius:13px!important;padding:0 11px!important;font-size:12px!important}
+body.keyboard-open .bottom{transform:translateY(120%);opacity:0;pointer-events:none}
+
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+ outline:2px solid rgba(121,93,255,.86)!important;outline-offset:2px
+}
+.iconbtn,.settings-top button,.close{min-width:44px;min-height:44px}
+.history-actions{display:flex;gap:6px;margin-top:9px}
+.history-actions button{margin:0!important;min-height:36px}
+.history-actions .danger-action{color:#ff7f91}
+.output{min-height:130px!important;padding:12px!important;border-radius:15px!important}
+.sheet{border-radius:22px 22px 0 0!important}
+.sheet-actions{position:sticky;bottom:0;background:inherit;padding-top:8px}
+.sheet-actions button{min-height:44px!important}
+
+body.theme-minimal .card,body.theme-minimal .smart-card{border-radius:17px!important}
+body.theme-minimal.light .section-status.done{color:#168866}
+body.theme-minimal.light .opt.selected{
+ background:#ececf1!important;border-color:#bdbdc8!important;color:#15161b!important
+}
+body.theme-minimal.light .completion-track{background:rgba(20,20,25,.07)}
+body.theme-minimal.light .topbar.compact{background:rgba(247,247,249,.90)}
+
+@media(max-width:390px){
+ .card{padding:12px 10px 11px!important}
+ .opt{min-height:46px!important;padding:6px!important;font-size:12px!important}
+ .options,.extra-options-wrap{gap:6px!important}
+ .mode{padding:4px 7px!important}
+ .section-status{font-size:8.5px}
+ .bottom{padding-left:9px!important;padding-right:9px!important}
+}
+
 </style>
 </head>
 <body>
@@ -832,10 +925,11 @@ body.theme-minimal.light .hair-svg{color:#555862}
         </button>
       </div>
     </div>
+    <div class="completion-track" aria-hidden="true"><i id="completionLine"></i></div>
   </div>
 
   <section class="hero">
-    <div class="kicker">Creator Studio 1.6</div>
+    <div class="kicker">Creator Studio 1.7</div>
     <h1><span class="grad">Build the character.</span><br>Control every detail.</h1>
     <p>Design reusable AI characters with visual traits, styling, scene direction, camera language and model-aware prompt formatting.</p>
     <div class="hero-grid">
@@ -958,7 +1052,7 @@ body.theme-minimal.light .hair-svg{color:#555862}
       </div>
 
       <div class="dev-divider"></div>
-      <div class="dev-version">CHARACTER BUILD / 1.6.0</div>
+      <div class="dev-version">CHARACTER BUILD / 1.7.0</div>
       <div class="madeby">MADE BY N S H D</div>
     </div>
   </div>
@@ -1049,7 +1143,7 @@ function renderModels(){
  const row=document.getElementById("modelRow");
  row.innerHTML=MODELS.map(m=>'<button class="model-chip '+(m===currentModel?'active':'')+'" onclick="setModel(\''+m.replace(/'/g,"\\'")+'\')">'+esc(m)+'</button>').join("");
 }
-function setModel(m){currentModel=m;renderModels();toast("Target: "+m)}
+function setModel(m){currentModel=m;renderModels();persistDraft();toast("Target: "+m)}
 
 
 function hairIcon(name){
@@ -1096,14 +1190,18 @@ function toggleMore(key,btn){
  const expanding=!wrap.classList.contains("expanded");
  wrap.classList.toggle("expanded",expanding);
  btn.classList.toggle("expanded",expanding);
+ btn.setAttribute("aria-expanded",expanding?"true":"false");
  const label=btn.querySelector(".more-label");
  if(label)label.textContent=expanding?"Show less":"More options";
- if(expanding){
+ if(expanding && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){
    wrap.animate(
-     [{opacity:0,transform:"translateY(-4px)"},{opacity:1,transform:"translateY(0)"}],
-     {duration:140,easing:"ease-out"}
+     [{opacity:.25,transform:"translateY(-3px)"},{opacity:1,transform:"translateY(0)"}],
+     {duration:110,easing:"cubic-bezier(.2,.8,.2,1)"}
    );
  }
+ const expanded=getExpandedSections();
+ expanding?expanded.add(key):expanded.delete(key);
+ localStorage.setItem("cb_expanded_sections",JSON.stringify([...expanded]));
  if(window.Android&&Android.haptic)Android.haptic(0);
 }
 function renderSections(){
@@ -1121,15 +1219,15 @@ function renderSections(){
       else if(s.key==="eyes")deco=eyeReference((typeof o==="object"&&o.eye)?o.eye:"#6d4a2f",t);
       else if(typeof o==="object"&&o.c)deco='<span class="swatch" style="background:'+o.c+'"></span>';
       else if(typeof o==="object"&&o.i)deco='<span class="icon">'+o.i+'</span>';
-      return '<button class="opt'+special+'" data-key="'+s.key+'" data-value="'+esc(t)+'" onclick="selectOption(\''+s.key+'\','+i+',this)">'+deco+'<span>'+esc(t)+'</span></button>';
+      return '<button class="opt'+special+'" type="button" aria-pressed="false" data-key="'+s.key+'" data-value="'+esc(t)+'" onclick="selectOption(\''+s.key+'\','+i+',this)">'+deco+'<span>'+esc(t)+'</span></button>';
    };
    const primary=s.options.slice(0,visible).map((o,i)=>renderOpt(o,i)).join("");
    const extra=s.options.slice(visible).map((o,i)=>renderOpt(o,i+visible)).join("");
-   const more=extra?'<button class="more-options" onclick="toggleMore(\''+s.key+'\',this)"><span class="more-label">More options</span><span class="chev"><svg viewBox="0 0 24 24" class="ui-icon" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button>':"";
-   const extraWrap=extra?'<div class="extra-options-wrap '+(s.visual?"three":"")+'">'+extra+'</div>':"";
+   const more=extra?'<button class="more-options" type="button" data-expand-key="'+s.key+'" aria-expanded="false" onclick="toggleMore(\''+s.key+'\',this)"><span class="more-label">More options</span><span class="chev"><svg viewBox="0 0 24 24" class="ui-icon" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button>':"";
+   const extraWrap=extra?'<div class="extra-options-wrap '+(s.visual?"three":"")+'" data-extra-key="'+s.key+'">'+extra+'</div>':"";
    const customInput='<div class="custom-row"><input class="custom-input" id="custom_'+s.key+'" placeholder="Add custom '+esc(s.title.toLowerCase())+'..."><button class="addbtn" onclick="addCustom(\''+s.key+'\')" aria-label="Add custom '+esc(s.title)+'"></button></div>';
    const upload=s.upload?'<label class="upload"><input id="sceneFile" type="file" accept="image/*" onchange="previewScene(event)"><span class="upload-icon"><svg class="ui-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m7 15 3-3 3 3 2-2 3 3"/><circle cx="9" cy="9" r="1.5"/></svg></span><span><b>Attach scene / studio reference</b><small>Kept on-device for visual reference</small></span></label><div class="preview" id="scenePreview"><img id="scenePreviewImg"><span id="sceneFileName"></span></div>':"";
-   return '<section class="card reveal-card" id="card_'+s.key+'"><div class="card-head"><div class="card-title-wrap"><span class="num">'+sectionIndex(s)+'</span><div><h3>'+esc(s.title)+'</h3>'+(s.desc?'<p class="desc">'+esc(s.desc)+'</p>':'')+'</div></div><span class="mode'+any+'">'+mode+'</span></div><div class="'+cls+'">'+primary+'</div>'+extraWrap+more+customInput+upload+'</section>';
+   return '<section class="card reveal-card" id="card_'+s.key+'"><div class="card-head"><div class="card-title-wrap"><span class="num">'+sectionIndex(s)+'</span><div><h3>'+esc(s.title)+'</h3>'+(s.desc?'<p class="desc">'+esc(s.desc)+'</p>':'')+'</div></div><div class="card-meta"><span class="mode'+any+'">'+mode+'</span><span class="section-status" id="status_'+s.key+'">Not set</span></div></div><div class="'+cls+'">'+primary+'</div>'+extraWrap+more+customInput+upload+'</section>';
  }).join("");
  updateUI();
 
@@ -1143,6 +1241,7 @@ function selectOption(key,index,el){
    state[key]=state[key].includes(val)?state[key].filter(v=>v!==val):[...state[key],val];
  }
  updateUI();
+ persistDraft();
  if(window.Android&&Android.haptic)Android.haptic(0);
  if(el){
    el.classList.remove("selection-pop");
@@ -1156,13 +1255,15 @@ function addCustom(key){
  const v=input.value.trim(); if(!v)return;
  const s=sections.find(x=>x.key===key);
  if(s.mode==="single") state[key]=[v]; else if(!state[key].includes(v)) state[key].push(v);
- custom[key]=v; input.value=""; updateUI(); toast("Custom trait added");
+ custom[key]=v; input.value=""; updateUI(); persistDraft(); toast("Custom trait added");
 }
 
 function updateUI(){
  document.querySelectorAll(".opt").forEach(el=>{
    const k=el.dataset.key,v=el.dataset.value;
-   el.classList.toggle("selected",state[k]&&state[k].includes(v));
+   const selected=!!(state[k]&&state[k].includes(v));
+   el.classList.toggle("selected",selected);
+   el.setAttribute("aria-pressed",selected?"true":"false");
  });
  let traits=Object.values(state).reduce((a,b)=>a+b.length,0);
  let filled=Object.values(state).filter(v=>v.length).length;
@@ -1173,6 +1274,16 @@ function updateUI(){
  document.getElementById("metricReady").textContent=ready+"%";
  document.getElementById("readyBar").style.width=ready+"%";
  document.getElementById("qualityBar").style.width=Math.min(100,ready+(traits>12?8:0))+"%";
+ const completion=document.getElementById("completionLine");
+ if(completion)completion.style.width=ready+"%";
+ sections.forEach(sec=>{
+   const n=(state[sec.key]||[]).length;
+   const status=document.getElementById("status_"+sec.key);
+   if(status){
+     status.textContent=n?(n===1?"Selected":n+" selected"):"Not set";
+     status.classList.toggle("done",n>0);
+   }
+ });
 }
 
 function first(key){return state[key]?.[0]||""}
@@ -1216,11 +1327,32 @@ function applyPreset(name){
  updateUI();toast("Preset applied");
 }
 function resetStateOnly(){Object.keys(state).forEach(k=>state[k]=[])}
+let resetArmed=false;
+let resetTimer=null;
 function resetAll(){
+ const traits=Object.values(state).reduce((a,b)=>a+b.length,0);
+ const btn=document.querySelector(".reset");
+ if(traits>=6 && !resetArmed){
+   resetArmed=true;
+   if(btn)btn.textContent="Confirm";
+   toast("Tap Reset again to clear everything");
+   clearTimeout(resetTimer);
+   resetTimer=setTimeout(()=>{
+     resetArmed=false;
+     if(btn)btn.textContent="↻ Reset";
+   },1800);
+   return;
+ }
+ resetArmed=false;
+ clearTimeout(resetTimer);
+ if(btn)btn.textContent="↻ Reset";
  resetStateOnly();
  document.querySelectorAll(".custom-input,.textarea").forEach(e=>e.value="");
  const p=document.getElementById("scenePreview"); if(p)p.style.display="none";
- updateUI();toast("Studio reset");
+ localStorage.removeItem("cb_draft_v17");
+ updateUI();
+ persistDraft();
+ toast("Studio reset");
 }
 
 document.getElementById("detailRange").addEventListener("input",e=>{
@@ -1352,7 +1484,17 @@ function openHistory(){
 function renderHistory(){
  const el=document.getElementById("historyList");let h=JSON.parse(localStorage.getItem("cb_history")||"[]");
  if(!h.length){el.innerHTML='<div class="empty">No saved prompts yet.<br>Generate a character and tap Save.</div>';return}
- el.innerHTML=h.map((x,i)=>'<div class="history-item"><div class="hmeta"><span>'+esc(x.model)+' • '+esc(x.ratio)+'</span><span>'+new Date(x.time).toLocaleDateString()+'</span></div><p>'+esc(x.prompt)+'</p><button onclick="reuseHistory('+i+')">Open prompt</button></div>').join("");
+ el.innerHTML=h.map((x,i)=>'<div class="history-item"><div class="hmeta"><span>'+(x.name?esc(x.name)+" • ":"")+esc(x.model)+' • '+esc(x.ratio)+'</span><span>'+new Date(x.time).toLocaleDateString()+'</span></div><p>'+esc(x.prompt)+'</p><div class="history-actions"><button onclick="reuseHistory('+i+')">Use</button><button onclick="renameHistory('+i+')">Rename</button><button class="danger-action" onclick="deleteHistory('+i+')">Delete</button></div></div>').join("");
+}
+function renameHistory(i){
+ const h=JSON.parse(localStorage.getItem("cb_history")||"[]"),x=h[i];if(!x)return;
+ const next=window.prompt("Name this prompt",x.name||"");
+ if(next===null)return;
+ x.name=next.trim();localStorage.setItem("cb_history",JSON.stringify(h));renderHistory();
+}
+function deleteHistory(i){
+ let h=JSON.parse(localStorage.getItem("cb_history")||"[]");
+ h.splice(i,1);localStorage.setItem("cb_history",JSON.stringify(h));renderHistory();toast("Deleted");
 }
 function reuseHistory(i){
  const h=JSON.parse(localStorage.getItem("cb_history")||"[]");const x=h[i];if(!x)return;
@@ -1394,10 +1536,115 @@ function setMinimalMode(mode){
   applyTheme();
   if(window.Android&&Android.haptic)Android.haptic(0);
 }
-function openSettings(){applyTheme();document.getElementById("settingsScreen").classList.add("show");document.body.style.overflow="hidden"}
-function closeSettings(){document.getElementById("settingsScreen").classList.remove("show");document.body.style.overflow=""}
+let mainScrollBeforeSettings=0;
+function openSettings(){
+ mainScrollBeforeSettings=window.scrollY;
+ applyTheme();
+ document.getElementById("settingsScreen").classList.add("show");
+ document.body.style.overflow="hidden";
+}
+function closeSettings(){
+ document.getElementById("settingsScreen").classList.remove("show");
+ document.body.style.overflow="";
+ requestAnimationFrame(()=>window.scrollTo(0,mainScrollBeforeSettings));
+}
 function openExternal(url){
   if(window.Android&&Android.openUrl)Android.openUrl(url);else window.open(url,"_blank");
+}
+
+
+const DRAFT_KEY="cb_draft_v17";
+let persistTimer=null;
+function getExpandedSections(){
+ try{return new Set(JSON.parse(localStorage.getItem("cb_expanded_sections")||"[]"))}catch(e){return new Set()}
+}
+function restoreDraftState(){
+ try{
+   const d=JSON.parse(localStorage.getItem(DRAFT_KEY)||"null");
+   if(!d)return;
+   if(d.state)Object.keys(state).forEach(k=>{
+     if(Array.isArray(d.state[k]))state[k]=d.state[k].filter(Boolean);
+   });
+   if(d.model&&MODELS.includes(d.model))currentModel=d.model;
+   if(typeof d.lastPrompt==="string")lastPrompt=d.lastPrompt;
+   if(typeof d.lastNegative==="string")lastNegative=d.lastNegative;
+ }catch(e){}
+}
+function restoreDraftControls(){
+ try{
+   const d=JSON.parse(localStorage.getItem(DRAFT_KEY)||"null");if(!d)return;
+   const set=(id,val)=>{const el=document.getElementById(id);if(el&&val!==undefined&&val!==null)el.value=val};
+   set("otherFeatures",d.otherFeatures||"");
+   set("negativeCustom",d.negativeCustom||"");
+   set("stylize",d.stylize||"balanced");
+   set("promptLanguage",d.promptLanguage||"Professional");
+   set("detailRange",d.detailRange||"3");
+   ["smartFill","identityLock","anatomySafe","skinSafe","negativeEnabled"].forEach(id=>{
+     const el=document.getElementById(id);if(el&&typeof d[id]==="boolean")el.checked=d[id];
+   });
+   const label=document.getElementById("detailLabel");
+   if(label)label.textContent=({1:"Clean",2:"Rich",3:"Max"})[document.getElementById("detailRange").value]||"Max";
+ }catch(e){}
+ const expanded=getExpandedSections();
+ expanded.forEach(key=>{
+   const card=document.getElementById("card_"+key);if(!card)return;
+   const wrap=card.querySelector(".extra-options-wrap"),btn=card.querySelector(".more-options");
+   if(wrap)wrap.classList.add("expanded");
+   if(btn){btn.classList.add("expanded");btn.setAttribute("aria-expanded","true");const l=btn.querySelector(".more-label");if(l)l.textContent="Show less";}
+ });
+ updateUI();
+}
+function persistDraft(){
+ clearTimeout(persistTimer);
+ persistTimer=setTimeout(()=>{
+   const get=(id,fallback="")=>{const el=document.getElementById(id);return el?el.value:fallback};
+   const check=(id,fb=false)=>{const el=document.getElementById(id);return el?el.checked:fb};
+   const d={
+     state:Object.fromEntries(Object.entries(state).map(([k,v])=>[k,[...v]])),
+     model:currentModel,lastPrompt,lastNegative,
+     otherFeatures:get("otherFeatures"),negativeCustom:get("negativeCustom"),
+     stylize:get("stylize","balanced"),promptLanguage:get("promptLanguage","Professional"),
+     detailRange:get("detailRange","3"),
+     smartFill:check("smartFill",true),identityLock:check("identityLock",true),
+     anatomySafe:check("anatomySafe",true),skinSafe:check("skinSafe",true),negativeEnabled:check("negativeEnabled",true)
+   };
+   localStorage.setItem(DRAFT_KEY,JSON.stringify(d));
+ },90);
+}
+function setupKeyboardFlow(){
+ document.addEventListener("focusin",e=>{
+   if(!e.target.matches("input,textarea,select"))return;
+   document.body.classList.add("keyboard-open");
+   if(e.target.matches("input,textarea")){
+     setTimeout(()=>e.target.scrollIntoView({block:"center",behavior:"auto"}),160);
+   }
+ });
+ document.addEventListener("focusout",()=>{
+   setTimeout(()=>{
+     if(!document.activeElement||!document.activeElement.matches("input,textarea,select"))document.body.classList.remove("keyboard-open");
+   },120);
+ });
+}
+function setupCompactHeader(){
+ let lastY=window.scrollY,ticking=false;
+ window.addEventListener("scroll",()=>{
+   if(ticking)return;ticking=true;
+   requestAnimationFrame(()=>{
+     const y=window.scrollY,bar=document.querySelector(".topbar");
+     if(bar){
+       if(y>120&&y>lastY+2)bar.classList.add("compact");
+       else if(y<70||y<lastY-5)bar.classList.remove("compact");
+     }
+     lastY=y;
+     localStorage.setItem("cb_scroll_y",String(y));
+     ticking=false;
+   });
+ },{passive:true});
+}
+function setupDraftListeners(){
+ document.addEventListener("input",e=>{if(e.target.matches("input,textarea,select"))persistDraft()},{passive:true});
+ document.addEventListener("change",e=>{if(e.target.matches("input,textarea,select"))persistDraft()},{passive:true});
+ document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")persistDraft()});
 }
 
 function handleNativeBack(){
@@ -1409,32 +1656,23 @@ function handleNativeBack(){
  return false
 }
 
-function setupSectionReveal(){
- const cards=[...document.querySelectorAll(".card")];
- if(!("IntersectionObserver" in window)){cards.forEach(c=>c.classList.add("in-view"));return}
- if(window.__cbObserver)window.__cbObserver.disconnect();
- window.__cbObserver=new IntersectionObserver(entries=>{
-   entries.forEach(entry=>{
-     if(entry.isIntersecting){
-       entry.target.classList.add("in-view");
-       window.__cbObserver.unobserve(entry.target);
-     }
-   })
- },{rootMargin:"0px 0px -5% 0px",threshold:.06});
- cards.forEach((c,i)=>{
-   if(c.getBoundingClientRect().top<window.innerHeight*.95)c.classList.add("in-view");
-   else window.__cbObserver.observe(c);
- });
-}
-
 function toast(msg){
  const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");
  clearTimeout(window.__tt);window.__tt=setTimeout(()=>el.classList.remove("show"),1600)
 }
 
+restoreDraftState();
 renderModels();
 renderSections();
 applyTheme();
+restoreDraftControls();
+setupKeyboardFlow();
+setupCompactHeader();
+setupDraftListeners();
+setTimeout(()=>{
+ const y=Number(localStorage.getItem("cb_scroll_y")||0);
+ if(y>0)window.scrollTo(0,y);
+},80);
 </script>
 </body>
 </html>
