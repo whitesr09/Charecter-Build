@@ -49,7 +49,9 @@ public class MainActivity extends Activity {
         settings.setDisplayZoomControls(false);
         settings.setLoadWithOverviewMode(false);
         settings.setUseWideViewPort(false);
-        settings.setTextZoom(100);
+        float fontScale = getResources().getConfiguration().fontScale;
+        int textZoom = Math.max(90, Math.min(135, Math.round(fontScale * 100f)));
+        settings.setTextZoom(textZoom);
         settings.setCacheMode(WebSettings.LOAD_DEFAULT);
         settings.setMediaPlaybackRequiresUserGesture(true);
 
@@ -153,7 +155,7 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public String appVersion() {
-            return "1.6.0";
+            return "1.7.0";
         }
 
         @JavascriptInterface
