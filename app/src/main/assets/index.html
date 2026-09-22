@@ -1243,12 +1243,7 @@ function selectOption(key,index,el){
  updateUI();
  persistDraft();
  if(window.Android&&Android.haptic)Android.haptic(0);
- if(el){
-   el.classList.remove("selection-pop");
-   void el.offsetWidth;
-   el.classList.add("selection-pop");
-   setTimeout(()=>el.classList.remove("selection-pop"),360);
- }
+ if(el)el.classList.remove("selection-pop");
 }
 function addCustom(key){
  const input=document.getElementById("custom_"+key); if(!input)return;
@@ -1626,19 +1621,22 @@ function setupKeyboardFlow(){
  });
 }
 function setupCompactHeader(){
- let lastY=window.scrollY,ticking=false;
+ let lastY=window.scrollY,ticking=false,scrollSaveTimer=null;
  window.addEventListener("scroll",()=>{
-   if(ticking)return;ticking=true;
-   requestAnimationFrame(()=>{
-     const y=window.scrollY,bar=document.querySelector(".topbar");
-     if(bar){
-       if(y>120&&y>lastY+2)bar.classList.add("compact");
-       else if(y<70||y<lastY-5)bar.classList.remove("compact");
-     }
-     lastY=y;
-     localStorage.setItem("cb_scroll_y",String(y));
-     ticking=false;
-   });
+   if(!ticking){
+     ticking=true;
+     requestAnimationFrame(()=>{
+       const y=window.scrollY,bar=document.querySelector(".topbar");
+       if(bar){
+         if(y>120&&y>lastY+2)bar.classList.add("compact");
+         else if(y<70||y<lastY-5)bar.classList.remove("compact");
+       }
+       lastY=y;
+       ticking=false;
+     });
+   }
+   clearTimeout(scrollSaveTimer);
+   scrollSaveTimer=setTimeout(()=>localStorage.setItem("cb_scroll_y",String(window.scrollY)),180);
  },{passive:true});
 }
 function setupDraftListeners(){
